@@ -1,0 +1,19 @@
+h1 {
+
+    text-align: center;
+}
+
+.calc-container {
+    
+    height: 400px;
+    width: 800px;
+    background-color: whitesmoke;
+}
+
+#inner-calc {
+    display: flex;
+    align-items: flex-;
+    height: 300px;
+    width: 600px;
+    background-color: grey;
+}
