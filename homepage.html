@@ -10,22 +10,23 @@
         <div class="calc-container"> 
             <div id = "inner-calc">
                 <div id="numberkey">
-                <button onclick="getNumber()" id="1">1</button>
-                <button id="2">2</button>   
-                <button id="3">3</button>
-                <button id="4">4</button>
-                <button id="5">5</button>   
-                <button id="6">6</button>   
-                <button id="7">7</button>
-                <button id="8">8</button>
-                <button id="9">9</button> 
+                <button onclick="getNumber(0)" id="0">0</button>   
+                <button onclick="getNumber(1)" id="1">1</button>
+                <button onclick="getNumber(2)" id="2">2</button>   
+                <button onclick="getNumber(3)" id="3">3</button>
+                <button onclick="getNumber(4)" id="4">4</button>
+                <button onclick="getNumber(5)" id="5">5</button>   
+                <button onclick="getNumber(6)" id="6">6</button>   
+                <button onclick="getNumber(7)" id="7">7</button>
+                <button onclick="getNumber(8)" id="8">8</button>
+                <button onclick="getNumber(9)" id="9">9</button> 
             </div>
-            <div id = "operations">
-                <button id="add">+</button>
-                <button id="subtract">-</button>
-                <button id="divide">÷</button>
-                <button id="multiply">x</button>
-                <button id="equals">=</button>
+            <div id = "operators">
+                <button id="add" onclick="add()">+</button>
+                <button id="subtract" onclick="subtract()">-</button>
+                <button id="divide" onclick="divide"()>÷</button>
+                <button id="multiply" onclick="multiply()">x</button>
+                <button id="equals" onclick="equals()">=</button>
             </div>
             <div id="display"></div>
         </div>
