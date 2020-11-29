@@ -24,39 +24,50 @@ let numberObject  = {
 let numberArray = [] ;
 let num1Array = [];
 let num2Array = [];
+let firstNumber = "";
 
 function getNumber(num) {
     num1Array.push(num);  
-    let num1 = num1Array[0,1,2,3,4,5,6,7,8,9];
+    let num1 = num1Array[0,1,2,3,4,5,6,7,8,9,'.'];
     let joinedNumber = Number(num1Array.join(""));
     console.log(joinedNumber);
-    /*num2 = numberArray[1];
-    num3 = numberArray[2];
-    num4 = numberArray[3];
-    num5 = numberArray[4]; */
     let paragraph = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(num);
     paragraph.appendChild(printNumber);
-};
+    let firstNumber = document.getElementById("numberDisplay").textContent;
+    return firstNumber;
+        
+        function add() {
+            console.log(firstNumber);
+            return firstNumber;
+            let number1 = firstNumber;
 
-function add() {
-    let operator = "add";
-    let result = num[0] + num [1];
-    console.log(result); 
-    console.log(operator);
-};
+        };
+ 
+    };
 
-function subtract() {
-    let result = num[0] - num [1];
-    console.log(result); 
-};
+        /*
+        function add(ad) {
+           
+        };
+        /*
+        function subtract() {
+            let result = num[0] - num [1];
+            console.log(result); 
+        };
+        
+        function multiply() {
+            let result = num[0] * num [1];
+            console.log(result); 
+        };
+        
+        function divide() {
+            let result = num[0] / num [1];
+            console.log(result); 
+        };
+    */
+    
 
-function multiply() {
-    let result = num[0] * num [1];
-    console.log(result); 
-};
+    
 
-function divide() {
-    let result = num[0] / num [1];
-    console.log(result); 
-};
+
