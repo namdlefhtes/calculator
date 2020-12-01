@@ -9,13 +9,6 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //try to store each value in array.
 
-/*
-let numberObject  = {
-     num1: "value",
-     num2: "value",
-     num3: "value",
-     num4: "value",
-};*/
 
 
 // number array should keep track of each complete number. Only once an 
@@ -24,50 +17,44 @@ let numberObject  = {
 let numberArray = [] ;
 let num1Array = [];
 let num2Array = [];
-let firstNumber = "";
+let addArray = [];
+var num = "";
 
 function getNumber(num) {
-    num1Array.push(num);  
-    let num1 = num1Array[0,1,2,3,4,5,6,7,8,9,'.'];
-    let joinedNumber = Number(num1Array.join(""));
-    console.log(joinedNumber);
     let paragraph = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(num);
     paragraph.appendChild(printNumber);
-    let firstNumber = document.getElementById("numberDisplay").textContent;
-    return firstNumber;
-        
-        function add() {
-            console.log(firstNumber);
-            return firstNumber;
-            let number1 = firstNumber;
+    num1Array.push(num);  
+    console.log(num1Array);
+    let joinedNumber = Number(num1Array.join(""));
+    console.log(joinedNumber);
+    num = joinedNumber;
+};
 
-        };
- 
-    };
-
-        /*
-        function add(ad) {
-           
-        };
-        /*
-        function subtract() {
-            let result = num[0] - num [1];
-            console.log(result); 
-        };
-        
-        function multiply() {
-            let result = num[0] * num [1];
-            console.log(result); 
-        };
-        
-        function divide() {
-            let result = num[0] / num [1];
-            console.log(result); 
-        };
-    */
-    
-
-    
+function add() {
+    //holds first number from equation.
+    addArray.push(num);
+    console.log(addArray);
+    //reset number.
+    num = "";
+    //add next part of equation.
 
 
+
+    add = addArray[0] + addArray[1];
+};
+
+function subtract() {
+    let result = num[0] - num [1];
+    console.log(result); 
+};
+
+function multiply() {
+    let result = num[0] * num [1];
+    console.log(result); 
+};
+
+function divide() {
+    let result = num[0] / num [1];
+    console.log(result); 
+};
