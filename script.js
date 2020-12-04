@@ -14,9 +14,18 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
 
+
+
+//holds values.
+var calcNumber = {
+one:"",
+two:"",
+three:"",
+four: ""
+};
+
 let tempArray = [] ;
-let num1Array = [];
-let num2Array = [];
+let numArray = [];
 let addArray = [];
 var num = "";
 //var paragraph = document.getElementById("numberDisplay");
@@ -29,40 +38,33 @@ function getNumber(num) {
     paragraph.appendChild(printNumber);
     tempArray.push(num);  
     joinedNumber = Number(tempArray.join(""));
-    num1Array = [];
-    num1Array.push(joinedNumber);
-    console.log(num1Array);
+    numArray = [];
+    numArray.push(joinedNumber);
+    console.log(numArray);
 };
 // this function may need to be changed to operator which has different options for each.
-function add() {
-    //holds first number from equation.
-    tempArray = [];
-    //reset number. and display.
-    num = "";
-    document.getElementById('numberDisplay').innerHTML='';
-    //add next part of equation.
-    tempArray.push(num);
-    num2Array.push(joinedNumber);
-    console.log(num2Array +" and " + num1Array);
 
+function operator(operation) {
+    if (operation == add) {
+        document.getElementById('numberDisplay').innerHTML='';
+        calcNumber.one = Number(numArray);
+        console.log(calcNumber.one);
+        //holds first number from equation.
+        tempArray = [];
+        //reset number. and display.
+        num = "";
+        //add next part of equation.
+        tempArray.push(num);
+         
+    }
+
+    else if (operation == equals) {
+
+        calcNumber.two = Number(numArray);
+        let result = calcNumber.one + calcNumber.two ;
+        console.log("equals" + result);
+
+
+    };
 };
 
-function subtract() {
-    let result = num[0] - num [1];
-    console.log(result); 
-};
-
-function multiply() {
-    let result = num[0] * num [1];
-    console.log(result); 
-};
-
-function divide() {
-    let result = num[0] / num [1];
-    console.log(result); 
-};
-
-function operator() {
- //if add, etc.
-
-};
