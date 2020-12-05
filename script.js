@@ -18,12 +18,14 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //holds values.
 var calcNumber = {
+ 
 one:"",
 two:"",
 three:"",
 four: ""
 };
 
+var addition = "";   
 let tempArray = [] ;
 let numArray = [];
 let addArray = [];
@@ -32,7 +34,9 @@ var num = "";
 //var printNumber = document.createTextNode(num);
 
 
+
 function getNumber(num) {
+    document.getElementById('numberDisplay').innerHTML='';
     let paragraph = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(num);
     paragraph.appendChild(printNumber);
@@ -44,9 +48,11 @@ function getNumber(num) {
 };
 // this function may need to be changed to operator which has different options for each.
 
+
+
 function operator(operation) {
+
     if (operation == add) {
-        document.getElementById('numberDisplay').innerHTML='';
         calcNumber.one = Number(numArray);
         console.log(calcNumber.one);
         //holds first number from equation.
@@ -55,16 +61,36 @@ function operator(operation) {
         num = "";
         //add next part of equation.
         tempArray.push(num);
-         
     }
 
-    else if (operation == equals) {
+    else if (operation == subtract ) {
 
-        calcNumber.two = Number(numArray);
-        let result = calcNumber.one + calcNumber.two ;
-        console.log("equals" + result);
+        calcNumber.one = Number(numArray);
+        console.log(calcNumber.one);
+        //holds first number from equation.
+        tempArray = [];
+        //reset number. and display.
+        num = "";
+        //add next part of equation.
+        tempArray.push(num);
+    }
+        // target most recent operation selection?
+        else if (operation == add && operation == equals) {
+            document.getElementById('numberDisplay').innerHTML='';
+            calcNumber.two = Number(numArray);
+            let result = calcNumber.one + calcNumber.two ;
+            let paragraph = document.getElementById("numberDisplay");
+            let printNumber = document.createTextNode(result);
+            paragraph.appendChild(printNumber);
+            console.log(printNumber);
+            console.log("equalstest");
+            }
 
 
     };
-};
+
+    
+    
+    
+   
 
