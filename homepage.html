@@ -7,8 +7,12 @@
 
     <body>
         <h1>Calculator v 0.01</h1>
+        <div id="display">
+            <p id="numberDisplay"></p>
+        </div>
         <div class="calc-container"> 
             <div id = "inner-calc">
+                
                 <div id="numberkey">  
 
                 <button onclick="getNumber(7)" id="7">7</button>
@@ -25,6 +29,7 @@
                 <button id="equals" onclick="operator(equals)">=</button>
 
             </div>
+            
             <div id = "operators">
                 <button id="add" onclick="operator(add)">+</button>
                 <button id="subtract" onclick="operator(subtract)">-</button>
@@ -32,9 +37,7 @@
                 <button id="multiply" onclick="operator(multiply)">x</button>
                 
             </div>
-            <div id="display">
-                <p id="numberDisplay"></p>
-            </div>
+         
         </div>
 
         </div>

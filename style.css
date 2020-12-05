@@ -4,25 +4,35 @@ h1 {
 }
 
 .calc-container {
+    
     display: flex;
     justify-content: center;
     display: block;
-    height: 600px;
-    width: 1000px;
+    height: 400px;
+    width: 400px;
     background-color: whitesmoke;
+
 }
 #inner-calc {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 200px 50px auto ;
+    grid-row-start: 2;
     height: 300px;
-    width: 600px;
+    width: 300px;
     background-color: grey;
 }
 
+#numberkey {
+    
+    height: auto;
+    width: 1fr;
+}
+
 button {
-height: 2fr; 
-width: 2fr;  
+    
+    height: 50px; 
+    width: 50px;  
 
 }
 
@@ -31,8 +41,13 @@ background-color:lightblue;
 
 }
 
+#display {
+align-items: right;
+}
+
 #operators {
 
     display: block;
     width: 50%;
+
 }
