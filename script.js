@@ -14,8 +14,6 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
 
-
-
 //holds values.
 var calcNumber = {
  
@@ -33,8 +31,6 @@ var num = "";
 //var paragraph = document.getElementById("numberDisplay");
 //var printNumber = document.createTextNode(num);
 
-
-
 function getNumber(num) {
     document.getElementById('numberDisplay').innerHTML='';
     let paragraph = document.getElementById("numberDisplay");
@@ -46,12 +42,8 @@ function getNumber(num) {
     numArray.push(joinedNumber);
     console.log(numArray);
 };
-// this function may need to be changed to operator which has different options for each.
-
-
 
 function operator(operation) {
-
     if (operation == add) {
         calcNumber.one = Number(numArray);
         console.log(calcNumber.one);
@@ -61,36 +53,86 @@ function operator(operation) {
         num = "";
         //add next part of equation.
         tempArray.push(num);
+        operator = add;
     }
 
-    else if (operation == subtract ) {
-
+    else if (operation == subtract) {
         calcNumber.one = Number(numArray);
         console.log(calcNumber.one);
-        //holds first number from equation.
         tempArray = [];
-        //reset number. and display.
         num = "";
-        //add next part of equation.
         tempArray.push(num);
+        operator = subtract;
+    
+        }
+
+    else if (operation == divide) {
+        calcNumber.one = Number(numArray);            
+        console.log(calcNumber.one);            
+        tempArray = [];            
+        num = "";            
+        tempArray.push(num);            
+        operator = divide;           
+        }
+        
+    else if (operation == multiply) {
+         calcNumber.one = Number(numArray);            
+        console.log(calcNumber.one);            
+        tempArray = [];            
+        num = "";            
+        tempArray.push(num);            
+        operator = multiply;           
+        }
+
+    else {
+
+        console.log("no operator selected");
+
     }
-        // target most recent operation selection?
-        else if (operation == add && operation == equals) {
-            document.getElementById('numberDisplay').innerHTML='';
-            calcNumber.two = Number(numArray);
-            let result = calcNumber.one + calcNumber.two ;
-            let paragraph = document.getElementById("numberDisplay");
-            let printNumber = document.createTextNode(result);
-            paragraph.appendChild(printNumber);
-            console.log(printNumber);
-            console.log("equalstest");
-            }
-
-
+     
     };
 
-    
-    
-    
-   
+function equals(operator) {
 
+    if (operator == add) {
+        document.getElementById('numberDisplay').innerHTML='';
+        calcNumber.two = Number(numArray);
+        let result = calcNumber.one + calcNumber.two ;
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        paragraph.appendChild(printNumber);
+        console.log(printNumber);
+    }
+
+    else if (operator == subtract) {
+        document.getElementById('numberDisplay').innerHTML='';
+        calcNumber.two = Number(numArray);
+        let result = calcNumber.one - calcNumber.two;
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        paragraph.appendChild(printNumber);
+        console.log(printNumber);
+    }
+       
+    else if (operator == divide) {
+        document.getElementById('numberDisplay').innerHTML='';
+        calcNumber.two = Number(numArray);
+        let result = calcNumber.one / calcNumber.two;
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        paragraph.appendChild(printNumber);
+        console.log(printNumber);
+    }
+    
+    else if (operator == multiply) {
+        document.getElementById('numberDisplay').innerHTML='';
+        calcNumber.two = Number(numArray);
+        let result = calcNumber.one * calcNumber.two;
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        paragraph.appendChild(printNumber);
+        console.log(printNumber);
+    }
+
+
+};
