@@ -32,15 +32,28 @@ var num = "";
 //var printNumber = document.createTextNode(num);
 
 function getNumber(num) {
-    document.getElementById('numberDisplay').innerHTML='';
-    let paragraph = document.getElementById("numberDisplay");
-    let printNumber = document.createTextNode(num);
-    paragraph.appendChild(printNumber);
-    tempArray.push(num);  
-    joinedNumber = Number(tempArray.join(""));
-    numArray = [];
-    numArray.push(joinedNumber);
-    console.log(numArray);
+    if (num != isNaN) {
+        document.getElementById('numberDisplay').innerHTML='';
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(num);
+        paragraph.appendChild(printNumber);
+        tempArray.push(num);  
+        joinedNumber = Number(tempArray.join(""));
+        numArray = [];
+        numArray.push(joinedNumber);
+        console.log(numArray);
+    }
+    else if (num == '.' )/*&& number display contains number and no decimal points */ {
+        document.getElementById('numberDisplay');
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(num);
+        tempArray.push(num);
+        joinedNumber = Number(tempArray.join(""));
+        numArray.push(joinedNumber);
+        console.log(joinedNumber + "decimal test");
+
+        }
+
 };
 
 function operator(operation) {
@@ -76,7 +89,7 @@ function operator(operation) {
         }
         
     else if (operation == multiply) {
-         calcNumber.one = Number(numArray);            
+        calcNumber.one = Number(numArray);            
         console.log(calcNumber.one);            
         tempArray = [];            
         num = "";            
