@@ -54,6 +54,13 @@ function getNumber(num) {
 
         }
 
+    else {
+        document.getElementById('numberDisplay').innerHTML='';
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode("");
+        
+    }
+
 };
 
 function operator(operation) {
@@ -97,10 +104,14 @@ function operator(operation) {
         operator = multiply;           
         }
 
-    else {
-
+    else if (operation == clear) {
+        calcNumber.one = "";            
+        console.log(calcNumber.one);            
+        tempArray = [];            
+        num = "";            
+        tempArray.push("");            
         console.log("no operator selected");
-
+        numArray = [""];
     }
      
     };
