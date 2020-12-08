@@ -23,7 +23,6 @@ three:"",
 four: ""
 };
 
-var addition = "";   
 let tempArray = [] ;
 let numArray = [];
 let addArray = [];
@@ -103,15 +102,18 @@ function operator(operation) {
         tempArray.push(num);            
         operator = multiply;           
         }
-
+// not yet working.
     else if (operation == clear) {
+        document.getElementById('numberDisplay').innerHTML='';
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.removeChild(paragraph);
         calcNumber.one = "";            
-        console.log(calcNumber.one);            
         tempArray = [];            
         num = "";            
         tempArray.push("");            
         console.log("no operator selected");
         numArray = [""];
+        
     }
      
     };
