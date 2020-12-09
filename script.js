@@ -8,7 +8,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
 
-//holds values.
+//holds values. will need to use for multi part equations.
 var calcNumber = {
  
 one:"",
@@ -97,14 +97,14 @@ function operator(sign) {
         }
 
     // not yet working.
-    else if (sign == clear) {
-
-        calcNumber.one = "";            
+    else if (sign == 'clear') {
+        console.log("clear");
+        numArray = [] ;         
         tempArray = [];            
         num = "";   
-        selectedOperator = '';         
-        console.log("no operator selected");
-        //numArray.pop = ;   
+        selectedOperator = '';     
+        getNumber(numArray);    
+
     }
      
     };
