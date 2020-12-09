@@ -32,37 +32,42 @@ var num = "";
 
 function getNumber(num) {
     if (num != isNaN) {
-        document.getElementById('numberDisplay').innerHTML='';
-        let paragraph = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(num);
-        paragraph.appendChild(printNumber);
+    
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
-        numArray = [];
+        //return joinedNumber;
+        console.log(joinedNumber);
         numArray.push(joinedNumber);
-        console.log(numArray);
-    }
-    else if (num == '.' )/*&& number display contains number and no decimal points */ {
-        document.getElementById('numberDisplay');
+        document.getElementById('numberDisplay').innerHTML='';
         let paragraph = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(num);
+        let printNumber = document.createTextNode(joinedNumber);
+        paragraph.appendChild(printNumber);
+
+    }
+
+    else if (num == '.' )/*&& number display contains number and no decimal points */ {
+        
         tempArray.push(num);
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
-        console.log(joinedNumber + "decimal test");
+        document.getElementById('numberDisplay');
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(num);
 
         }
 
-    else {
+   /* else {
+
         document.getElementById('numberDisplay').innerHTML='';
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode("");
         
-    }
+    } */
 
 };
 
 function operator(operation) {
+
     if (operation == add) {
         calcNumber.one = Number(numArray);
         console.log(calcNumber.one);
@@ -102,28 +107,27 @@ function operator(operation) {
         tempArray.push(num);            
         operator = multiply;           
         }
-// not yet working.
+
+    // not yet working.
     else if (operation == clear) {
-        document.getElementById('numberDisplay').innerHTML='';
-        let paragraph = document.getElementById("numberDisplay");
-        let printNumber = document.removeChild(paragraph);
+
         calcNumber.one = "";            
         tempArray = [];            
         num = "";            
-        tempArray.push("");            
         console.log("no operator selected");
-        numArray = [""];
-        
+        //numArray.pop = ;   
     }
      
     };
 
 function equals(operator) {
-
+    // refactor to use single array with positions I think.
     if (operator == add) {
         document.getElementById('numberDisplay').innerHTML='';
         calcNumber.two = Number(numArray);
-        let result = calcNumber.one + calcNumber.two ;
+        let result = calcNumber.two[0] + calcNumber.two[1];
+        console.log(result);
+       // let result = calcNumber.one + calcNumber.two;
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         paragraph.appendChild(printNumber);
