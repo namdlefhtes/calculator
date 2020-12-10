@@ -7,7 +7,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
-
+/
 //holds values. will need to use for multi part equations.
 var calcNumber = {
  
@@ -60,7 +60,7 @@ function getNumber(num) {
 function operator(sign) {
 
     if (sign == add) {
-        calcNumber.one = Number(numArray);
+        tempNumber = Number(numArray);
         console.log("plus");
         //holds first number from equation.
         tempArray = [];
@@ -72,7 +72,7 @@ function operator(sign) {
     }
 
     else if (sign == subtract) {
-        calcNumber.one = Number(numArray);
+        tempNumber = Number(numArray);
         tempArray = [];
         num = "";
         tempArray.push(num);
@@ -81,7 +81,7 @@ function operator(sign) {
         }
 
     else if (sign == divide) {
-        calcNumber.one = Number(numArray);            
+        tempNumber = Number(numArray);            
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
@@ -89,7 +89,7 @@ function operator(sign) {
         }
         
     else if (sign == multiply) {
-        calcNumber.one = Number(numArray);            
+        tempNumber = Number(numArray);            
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
@@ -99,11 +99,15 @@ function operator(sign) {
     // not yet working.
     else if (sign == 'clear') {
         console.log("clear");
-        numArray = [] ;         
+        numArray = [];       
         tempArray = [];            
         num = "";   
-        selectedOperator = '';     
-        getNumber(numArray);    
+        tempNumber = "";
+        selectedOperator = '';    
+        numArray.splice(numArray.length);
+        numArray.shift();
+        getNumber(numArray);   
+        console.log("this is the numArray"+ numArray); 
 
     }
      
@@ -122,6 +126,7 @@ function equals(selectedOperator) {
     }
 
     else if (selectedOperator == subtract) {
+        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         let result = Number(numArray[0] - numArray[1]);
         console.log(result);
@@ -131,6 +136,7 @@ function equals(selectedOperator) {
     }
        
     else if (selectedOperator == divide) {
+        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         let result = Number(numArray[0] / numArray[1]);
         console.log(result);
@@ -141,6 +147,7 @@ function equals(selectedOperator) {
     }
     
     else if (selectedOperator == multiply) {
+        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         result = Number(numArray[0] * numArray[1]);
         console.log(result);
