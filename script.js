@@ -8,7 +8,8 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
 
-//holds values. will need to use for multi part equations.
+//holds values. will need to use for multi part equations. not sure it will work as I want.
+
 var calcNumber = {
  
 one:"",
@@ -19,11 +20,12 @@ four: ""
 
 let tempArray = [] ;
 let numArray = [];
-let addArray = [];
+let equationArray = [];
+//let addArray = [];
 var num = "";
 
 function getNumber(num) {
-    if (num != isNaN && numArray.length <= 2) {
+    if (num != isNaN /*&& numArray.length <= 2*/) {
         //numArray.shift();
         //joinedNumber is the main number.
         tempArray.push(num);  
@@ -34,11 +36,11 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         paragraph.appendChild(printNumber);
-            // deletes extra number.
+            /* deletes extra number.
             if (numArray.length >= 3) {
                 numArray.shift();
                 console.log("number removed");        
-            }
+            } */
     }
 
     else if (num =="." )/*&& number display contains number and no decimal points */ {
@@ -57,7 +59,10 @@ function getNumber(num) {
 function operator(sign) {
 
     if (sign == add) {
+    
         tempNumber = Number(numArray);
+        equationArray.push(numArray[numArray.length -1]);
+        //calcNumber.one = numArray;
         console.log("plus");
         //holds first number from equation.
         tempArray = [];
@@ -101,7 +106,7 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
-        getNumber(0);
+        getNumber("0");
         console.log("this is the numArray"+ numArray); 
       ;
     }
@@ -111,9 +116,10 @@ function operator(sign) {
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
     if (selectedOperator == add) {
+        equationArray.push(numArray[numArray.length -1]);
         console.log("equals");  
         document.getElementById('numberDisplay').innerHTML='';
-        let result = Number(numArray[0] + numArray[1]);
+        let result = Number(equationArray[0] + equationArray[1]);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
