@@ -49,7 +49,7 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(num);
         paragraph.appendChild(joinedNumber);
-        
+
         }
 
 };
@@ -121,7 +121,6 @@ function equals(selectedOperator) {
     }
 
     else if (selectedOperator == subtract) {
-        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         let result = Number(numArray[0] - numArray[1]);
         console.log(result);
@@ -131,18 +130,23 @@ function equals(selectedOperator) {
     }
        
     else if (selectedOperator == divide) {
-        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         let result = Number(numArray[0] / numArray[1]);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         paragraph.appendChild(printNumber);
+
+            if (result == Infinity) {
+                 paragraph = document.getElementById("numberDisplay");
+                 printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
+                paragraph.appendChild(printNumber);
+
+            }
         
     }
     
     else if (selectedOperator == multiply) {
-        //numArray.shift();
         document.getElementById('numberDisplay').innerHTML='';
         result = Number(numArray[0] * numArray[1]);
         console.log(result);
