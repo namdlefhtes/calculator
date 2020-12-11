@@ -22,9 +22,8 @@ let numArray = [];
 let addArray = [];
 var num = "";
 
-// after clear this breaks. nummArray.shift breaks it before clear. could always have 0 or only pull from 1 and 2 onwards.
 function getNumber(num) {
-    if (num != isNaN) {
+    if (num != isNaN && numArray.length <= 2) {
         //numArray.shift();
         //joinedNumber is the main number.
         tempArray.push(num);  
@@ -35,9 +34,12 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         paragraph.appendChild(printNumber);
-
+            // deletes extra number.
+            if (numArray.length >= 3) {
+                numArray.shift();
+                console.log("number removed");        
+            }
     }
-
 
     else if (num =="." )/*&& number display contains number and no decimal points */ {
         // adds decimal point. Invisible until 1st decimal place added.
@@ -47,16 +49,8 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(num);
         paragraph.appendChild(joinedNumber);
-
-        }
-
-   /* else {
-
-        document.getElementById('numberDisplay').innerHTML='';
-        let paragraph = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode("");
         
-    } */
+        }
 
 };
 
