@@ -7,7 +7,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 // number array should keep track of each complete number. Only once an 
 // once an operator is selected it should push that complete number to it.
-/
+
 //holds values. will need to use for multi part equations.
 var calcNumber = {
  
@@ -22,8 +22,10 @@ let numArray = [];
 let addArray = [];
 var num = "";
 
+// after clear this breaks. nummArray.shift breaks it before clear. could always have 0 or only pull from 1 and 2 onwards.
 function getNumber(num) {
     if (num != isNaN) {
+        //numArray.shift();
         //joinedNumber is the main number.
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
@@ -35,6 +37,7 @@ function getNumber(num) {
         paragraph.appendChild(printNumber);
 
     }
+
 
     else if (num =="." )/*&& number display contains number and no decimal points */ {
         // adds decimal point. Invisible until 1st decimal place added.
@@ -103,14 +106,12 @@ function operator(sign) {
         tempArray = [];            
         num = "";   
         tempNumber = "";
-        selectedOperator = '';    
-        numArray.splice(numArray.length);
-        numArray.shift();
-        getNumber(numArray);   
+        selectedOperator = '';   
+        getNumber(0);
         console.log("this is the numArray"+ numArray); 
-
+      ;
     }
-     
+;     
     };
 
 function equals(selectedOperator) {
