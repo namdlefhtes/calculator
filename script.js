@@ -44,7 +44,7 @@ function getNumber(num) {
             } */
     }
 
-    else if (num =="." )/*&& number display contains number and no decimal points */ {
+    else if (num == "." )/*&& number display contains number and no decimal points */ {
         // adds decimal point. Invisible until 1st decimal place added.
         tempArray.push(num);
         numArray.push(joinedNumber);
@@ -52,9 +52,15 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(num);
         paragraph.appendChild(joinedNumber);
-
+        //decimal error not working.
+            if (joinedNumber == NaN)  {
+                document.getElementById('errorDisplay').innerHTML='';
+                let paragraph = document.getElementById("errorDisplay");
+                let printError = document.createTextNode("TEST");
+                paragraph.appendChild();
+            }
         }
-};
+    };
 
 function operator(sign) {
 
