@@ -24,6 +24,7 @@ let equationArray = [];
 //let addArray = [];
 var num = "";
 
+
 function getNumber(num) {
     if (num != isNaN /*&& numArray.length <= 2*/) {
         //numArray.shift();
@@ -53,13 +54,11 @@ function getNumber(num) {
         paragraph.appendChild(joinedNumber);
 
         }
-
 };
 
 function operator(sign) {
 
     if (sign == add) {
-    
         tempNumber = Number(numArray);
         equationArray.push(numArray[numArray.length -1]);
         //calcNumber.one = numArray;
@@ -75,6 +74,7 @@ function operator(sign) {
 
     else if (sign == subtract) {
         tempNumber = Number(numArray);
+        equationArray.push(numArray[numArray.length -1]);
         tempArray = [];
         num = "";
         tempArray.push(num);
@@ -83,7 +83,8 @@ function operator(sign) {
         }
 
     else if (sign == divide) {
-        tempNumber = Number(numArray);            
+        tempNumber = Number(numArray);    
+        equationArray.push(numArray[numArray.length -1]);        
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
@@ -91,7 +92,8 @@ function operator(sign) {
         }
         
     else if (sign == multiply) {
-        tempNumber = Number(numArray);            
+        tempNumber = Number(numArray);
+        equationArray.push(numArray[numArray.length -1]);            
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
@@ -119,7 +121,9 @@ function equals(selectedOperator) {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");  
         document.getElementById('numberDisplay').innerHTML='';
-        let result = Number(equationArray[0] + equationArray[1]);
+        num1 = equationArray[equationArray.length -2]; 
+        num2 = equationArray[equationArray.length -1];
+        let result = Number(num1 + num2);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
@@ -127,8 +131,12 @@ function equals(selectedOperator) {
     }
 
     else if (selectedOperator == subtract) {
+        equationArray.push(numArray[numArray.length -1]);
+        console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
-        let result = Number(numArray[0] - numArray[1]);
+        num1 = equationArray[equationArray.length -2]; 
+        num2 = equationArray[equationArray.length -1];
+        let result = Number(num1 - num2);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
@@ -136,8 +144,12 @@ function equals(selectedOperator) {
     }
        
     else if (selectedOperator == divide) {
+        equationArray.push(numArray[numArray.length -1]);
+        console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
-        let result = Number(numArray[0] / numArray[1]);
+        num1 = equationArray[equationArray.length -2]; 
+        num2 = equationArray[equationArray.length -1];
+        let result = Number(num1 / num2);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
@@ -147,14 +159,17 @@ function equals(selectedOperator) {
                  paragraph = document.getElementById("numberDisplay");
                  printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
                 paragraph.appendChild(printNumber);
-
             }
         
     }
     
     else if (selectedOperator == multiply) {
+        equationArray.push(numArray[numArray.length -1]);
+        console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
-        result = Number(numArray[0] * numArray[1]);
+        num1 = equationArray[equationArray.length -2]; 
+        num2 = equationArray[equationArray.length -1];
+        result = Number(num1 * num2);
         console.log(result);
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
