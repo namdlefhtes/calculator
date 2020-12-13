@@ -110,6 +110,8 @@ function operator(sign) {
     }
 ;     
     };
+/* refactor to calculate and store in calculatedNumber object 
+automatically everytime second part as added, not on equals. */
 
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
