@@ -51,3 +51,8 @@ align-items: right;
     width: 50%;
 
 }
+
+#errorDisplay {
+    color: red;
+
+}

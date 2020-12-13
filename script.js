@@ -26,40 +26,31 @@ var num = "";
 
 
 function getNumber(num) {
-    if (num != isNaN /*&& numArray.length <= 2*/) {
-        //numArray.shift();
+    if (typeof(num) === "number" || num == ".") {
         //joinedNumber is the main number.
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
-        console.log(joinedNumber);
+        //console.log(joinedNumber);
         numArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         paragraph.appendChild(printNumber);
-            /* deletes extra number.
-            if (numArray.length >= 3) {
-                numArray.shift();
-                console.log("number removed");        
-            } */
+          
     }
+/*   This has potential, but I think it may need to run somewhere else, maybe within the if in getNumber.
+    else if ( numArray.includes(NaN) == true ) {
 
-    else if (num == "." )/*&& number display contains number and no decimal points */ {
-        // adds decimal point. Invisible until 1st decimal place added.
-        tempArray.push(num);
-        numArray.push(joinedNumber);
-        document.getElementById('numberDisplay').innerHTML='.';
-        let paragraph = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(num);
-        paragraph.appendChild(joinedNumber);
-        //decimal error not working.
-            if (joinedNumber == NaN)  {
-                document.getElementById('errorDisplay').innerHTML='';
-                let paragraph = document.getElementById("errorDisplay");
-                let printError = document.createTextNode("TEST");
-                paragraph.appendChild();
-            }
-        }
+            console.log("test");
+            numArray.pop();
+            console.log(numArray);
+            document.getElementById('errorDisplay').innerHTML='';
+            let paragraph = document.getElementById("errorDisplay");
+            let printError = document.createTextNode("Error: number can only contain one decimal.");
+            paragraph.appendChild(printError);
+      
+            
+        }   */
     };
 
 function operator(sign) {
@@ -114,8 +105,7 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
-        getNumber("0");
-        console.log("this is the numArray"+ numArray); 
+        getNumber(0);
       ;
     }
 ;     
@@ -182,5 +172,4 @@ function equals(selectedOperator) {
         paragraph.appendChild(printNumber);
     }
 
-
-};
+}
