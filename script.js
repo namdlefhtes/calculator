@@ -26,7 +26,7 @@ var num = "";
 
 
 function getNumber(num) {
-    if (typeof(num) === "number" || num == ".") {
+    if (typeof(num) === "number" /*|| num == "." */ ) {
         //joinedNumber is the main number.
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
@@ -38,8 +38,21 @@ function getNumber(num) {
         paragraph.appendChild(printNumber);
           
     }
-/*   This has potential, but I think it may need to run somewhere else, maybe within the if in getNumber.
-    else if ( numArray.includes(NaN) == true ) {
+
+    else if (num == ".") {
+        tempArray.push(num);
+        joinedNumber = Number(tempArray.join(""));
+        numArray.push(joinedNumber);
+        document.getElementById('numberDisplay').innerHTML='';
+        let paragraph = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(joinedNumber + ".");
+        paragraph.appendChild(printNumber);
+
+    }
+
+    else if ( numArray[-1] == NaN ) 
+        
+        /*( numArray.includes(NaN) == true ) */ {
 
             console.log("test");
             numArray.pop();
@@ -50,8 +63,8 @@ function getNumber(num) {
             paragraph.appendChild(printError);
       
             
-        }   */
-    };
+        }  
+    }
 
 function operator(sign) {
 
