@@ -33,9 +33,9 @@ function getNumber(num) {
         //console.log(joinedNumber);
         numArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
           
     }
 
@@ -44,17 +44,20 @@ function getNumber(num) {
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber + ".");
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
              if  ( numArray.includes(NaN) == true ) {
                 console.log("test");
                 numArray.pop();
                 console.log(numArray);
                 document.getElementById('errorDisplay').innerHTML='';
-                let paragraph = document.getElementById("errorDisplay");
+                let errorElement = document.getElementById("errorDisplay");
                 let printError = document.createTextNode("Error: number can only contain one decimal.");
-                paragraph.appendChild(printError);
+                errorElement.appendChild(printError);
+                let displayElement = document.getElementById("numberDisplay");
+                let printNumber = document.createTextNode(joinedNumber);
+                displayElement.appendChild(printNumber);
             }  
 
     }
@@ -132,9 +135,9 @@ function equals(selectedOperator) {
         num2 = equationArray[equationArray.length -1];
         let result = Number(num1 + num2);
         console.log(result);
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
     }
 
     else if (selectedOperator == subtract) {
@@ -145,9 +148,9 @@ function equals(selectedOperator) {
         num2 = equationArray[equationArray.length -1];
         let result = Number(num1 - num2);
         console.log(result);
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
     }
        
     else if (selectedOperator == divide) {
@@ -158,14 +161,14 @@ function equals(selectedOperator) {
         num2 = equationArray[equationArray.length -1];
         let result = Number(num1 / num2);
         console.log(result);
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
 
             if (result == Infinity) {
-                 paragraph = document.getElementById("numberDisplay");
+                displayElement = document.getElementById("numberDisplay");
                  printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
-                paragraph.appendChild(printNumber);
+                 displayElement.appendChild(printNumber);
             }
         
     }
@@ -178,9 +181,9 @@ function equals(selectedOperator) {
         num2 = equationArray[equationArray.length -1];
         result = Number(num1 * num2);
         console.log(result);
-        let paragraph = document.getElementById("numberDisplay");
+        let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
-        paragraph.appendChild(printNumber);
+        displayElement.appendChild(printNumber);
     }
 
 }
