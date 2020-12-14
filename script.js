@@ -48,15 +48,16 @@ function getNumber(num) {
         let printNumber = document.createTextNode(joinedNumber + ".");
         displayElement.appendChild(printNumber);
              if  ( numArray.includes(NaN) == true ) {
-                console.log("test");
                 numArray.pop();
-                console.log(numArray);
+                tempArray.pop();
+                joinedNumber = Number(tempArray.join(""));
                 document.getElementById('errorDisplay').innerHTML='';
                 let errorElement = document.getElementById("errorDisplay");
                 let printError = document.createTextNode("Error: number can only contain one decimal.");
                 errorElement.appendChild(printError);
                 let displayElement = document.getElementById("numberDisplay");
-                let printNumber = document.createTextNode(joinedNumber);
+                //let printNumber = document.createTextNode("");
+                printNumber = document.createTextNode(joinedNumber);
                 displayElement.appendChild(printNumber);
             }  
 
