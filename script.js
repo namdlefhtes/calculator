@@ -47,23 +47,19 @@ function getNumber(num) {
         let paragraph = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber + ".");
         paragraph.appendChild(printNumber);
+             if  ( numArray.includes(NaN) == true ) {
+                console.log("test");
+                numArray.pop();
+                console.log(numArray);
+                document.getElementById('errorDisplay').innerHTML='';
+                let paragraph = document.getElementById("errorDisplay");
+                let printError = document.createTextNode("Error: number can only contain one decimal.");
+                paragraph.appendChild(printError);
+            }  
 
     }
 
-    else if ( numArray[-1] == NaN ) 
-        
-        /*( numArray.includes(NaN) == true ) */ {
 
-            console.log("test");
-            numArray.pop();
-            console.log(numArray);
-            document.getElementById('errorDisplay').innerHTML='';
-            let paragraph = document.getElementById("errorDisplay");
-            let printError = document.createTextNode("Error: number can only contain one decimal.");
-            paragraph.appendChild(printError);
-      
-            
-        }  
     }
 
 function operator(sign) {
