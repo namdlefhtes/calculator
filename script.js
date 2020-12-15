@@ -10,13 +10,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
-var calcNumber = {
- 
-one:"",
-two:"",
-three:"",
-four: ""
-};
+var numberHolderArray = [];
 
 let tempArray = [] ;
 let numArray = [];
@@ -36,6 +30,15 @@ function getNumber(num) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
+
+        if (equationArray.length >= 1 ) {
+            equationArray.push(tempArray[1]);
+            console.log("testnumber if ")
+            numberHolderArray.push(equationArray[equationArray.length - 2]);
+            numberHolderArray.push(equationArray[equationArray.length - 1]);
+            
+
+        }
         
        /* to show equation being worked on
        
@@ -137,7 +140,7 @@ automatically everytime second part as added, not on equals. */
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
     if (selectedOperator == add) {
-        equationArray.push(numArray[numArray.length -1]);
+        //equationArray.push(numArray[numArray.length -1]);
         console.log("equals");  
         document.getElementById('numberDisplay').innerHTML='';
         num1 = equationArray[equationArray.length -2]; 
