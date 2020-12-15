@@ -36,6 +36,14 @@ function getNumber(num) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
+        
+       /* to show equation being worked on
+       
+       if (equationArray.length > 1 ) {
+            console.log("test");
+            document.getElementById("equationDisplay").innerHTML = equationArray[0] + " + " + tempArray[-1];
+        } */
+        
           
     }
 
@@ -78,6 +86,7 @@ function operator(sign) {
         //add next part of equation.
         tempArray.push(num);
         selectedOperator = add;
+        //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
 
     else if (sign == subtract) {
@@ -116,6 +125,7 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
+        document.getElementById("equationDisplay").innerHTML = "";
         getNumber(0);
       ;
     }
@@ -137,6 +147,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
+        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " + " + equationArray[1] + " = ";
     }
 
     else if (selectedOperator == subtract) {
@@ -150,6 +161,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
+        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " - " + equationArray[1] + " = ";
     }
        
     else if (selectedOperator == divide) {
@@ -163,6 +175,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
+        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " ÷ " + equationArray[1] + " = ";
 
             if (result == Infinity) {
                 displayElement = document.getElementById("numberDisplay");
@@ -183,6 +196,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
+        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " x " + equationArray[1] + " = ";
     }
 
 }
