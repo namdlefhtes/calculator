@@ -55,10 +55,8 @@ function getNumber(num) {
                 let errorElement = document.getElementById("errorDisplay");
                 let printError = document.createTextNode("Error: number can only contain one decimal.");
                 errorElement.appendChild(printError);
-                let displayElement = document.getElementById("numberDisplay");
-                //let printNumber = document.createTextNode("");
-                printNumber = document.createTextNode(joinedNumber);
-                displayElement.appendChild(printNumber);
+                document.getElementById("numberDisplay").innerHTML = joinedNumber;
+                
             }  
 
     }
