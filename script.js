@@ -147,9 +147,8 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " + " + equationArray[1] + " = ";
+        document.getElementById("equationDisplay").innerHTML = num1 + " + " + num2 + " = ";
     }
-
     else if (selectedOperator == subtract) {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");
@@ -161,7 +160,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " - " + equationArray[1] + " = ";
+        document.getElementById("equationDisplay").innerHTML = num1 + " - " + num2 + " = ";
     }
        
     else if (selectedOperator == divide) {
@@ -175,7 +174,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " ÷ " + equationArray[1] + " = ";
+        document.getElementById("equationDisplay").innerHTML = num1 + " ÷ " + num2 + " = ";
 
             if (result == Infinity) {
                 displayElement = document.getElementById("numberDisplay");
@@ -196,7 +195,7 @@ function equals(selectedOperator) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = equationArray[0] + " x " + equationArray[1] + " = ";
+        document.getElementById("equationDisplay").innerHTML = num1 + " x " + num2 + " = ";
     }
 
 }
