@@ -31,7 +31,7 @@ function getNumber(num) {
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
 
-        if (equationArray.length >= 1 ) {
+        /*if (equationArray.length >= 1 ) {
             equationArray.push(tempArray[1]);
             console.log("testnumber if ")
             numberHolderArray.push(equationArray[equationArray.length - 2]);
@@ -140,7 +140,7 @@ automatically everytime second part as added, not on equals. */
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
     if (selectedOperator == add) {
-        //equationArray.push(numArray[numArray.length -1]);
+        equationArray.push(numArray[numArray.length -1]);
         console.log("equals");  
         document.getElementById('numberDisplay').innerHTML='';
         num1 = equationArray[equationArray.length -2]; 
