@@ -18,6 +18,15 @@ let equationArray = [];
 //let addArray = [];
 var num = "";
 
+function pushToHolder() {
+ if ( equationArray.length >= 1) {
+    
+    numberHolderArray.push(equationArray[equationArray.length -1]);
+    console.log(numberHolderArray +"This is the numberholder");
+    }; 
+};
+
+
 
 function getNumber(num) {
     if (typeof(num) === "number" /*|| num == "." */ ) {
@@ -30,23 +39,6 @@ function getNumber(num) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
-
-        /*if (equationArray.length >= 1 ) {
-            equationArray.push(tempArray[1]);
-            console.log("testnumber if ")
-            numberHolderArray.push(equationArray[equationArray.length - 2]);
-            numberHolderArray.push(equationArray[equationArray.length - 1]);
-            
-
-        }
-        
-       /* to show equation being worked on
-       
-       if (equationArray.length > 1 ) {
-            console.log("test");
-            document.getElementById("equationDisplay").innerHTML = equationArray[0] + " + " + tempArray[-1];
-        } */
-        
           
     }
 
@@ -89,6 +81,8 @@ function operator(sign) {
         //add next part of equation.
         tempArray.push(num);
         selectedOperator = add;
+        pushToHolder();
+     
         //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
 
@@ -99,6 +93,8 @@ function operator(sign) {
         num = "";
         tempArray.push(num);
         selectedOperator = subtract;
+        pushToHolder();
+
     
         }
 
@@ -108,7 +104,9 @@ function operator(sign) {
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
-        selectedOperator = divide;           
+        selectedOperator = divide;    
+        pushToHolder();
+       
         }
         
     else if (sign == multiply) {
@@ -117,7 +115,9 @@ function operator(sign) {
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
-        selectedOperator = multiply;           
+        selectedOperator = multiply;   
+        pushToHolder();
+        
         }
 
     // not yet working.
@@ -128,13 +128,17 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
+        numberHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = "";
         getNumber(0);
-      ;
+    }
+       //adds most recent number to numberHolderArray following
+
+      
     }
 ;     
-    };
-/* refactor to calculate and store in calculatedNumber object 
+   
+/* refactor to calculate and store in numberHolderArry  
 automatically everytime second part as added, not on equals. */
 
 function equals(selectedOperator) {
