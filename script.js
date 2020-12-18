@@ -139,7 +139,10 @@ function operator(sign) {
 ;     
    
 /* refactor to calculate and store in numberHolderArry  
-automatically everytime second part as added, not on equals. */
+automatically everytime second part as added, not on equals. 
+will need to store operator signs in correct order too.
+
+*/
 
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
