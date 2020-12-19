@@ -5,9 +5,6 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //try to store each value in array
 
-// number array should keep track of each complete number. Only once an 
-// once an operator is selected it should push that complete number to it.
-
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
 var numberHolderArray = [];
@@ -15,8 +12,19 @@ var operatorHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
 let equationArray = [];
-//let addArray = [];
 var num = "";
+
+function tempNumberPush() {
+    tempNumber = Number(numArray);
+    equationArray.push(numArray[numArray.length -1]);
+    //holds first number from equation.
+    tempArray = [];
+    //reset number. and display.
+    num = "";
+    //add next part of equation.
+    tempArray.push(num);
+
+}
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
@@ -26,8 +34,6 @@ function pushToHolder() {
     operatorHolderArray.push(selectedOperator);
     }; 
 };
-
-
 
 function getNumber(num) {
     if (typeof(num) === "number" /*|| num == "." */ ) {
@@ -71,15 +77,7 @@ function getNumber(num) {
 function operator(sign) {
 
     if (sign == 'add') {
-        tempNumber = Number(numArray);
-        equationArray.push(numArray[numArray.length -1]);
-        console.log("plus");
-        //holds first number from equation.
-        tempArray = [];
-        //reset number. and display.
-        num = "";
-        //add next part of equation.
-        tempArray.push(num);
+        tempNumberPush(numArray);
         selectedOperator = 'add';
         pushToHolder();
      
@@ -87,11 +85,7 @@ function operator(sign) {
     }
 
     else if (sign == 'subtract') {
-        tempNumber = Number(numArray);
-        equationArray.push(numArray[numArray.length -1]);
-        tempArray = [];
-        num = "";
-        tempArray.push(num);
+        tempNumberPush(numArray);
         selectedOperator = 'subtract';
         pushToHolder();
 
@@ -99,28 +93,19 @@ function operator(sign) {
         }
 
     else if (sign == 'divide') {
-        tempNumber = Number(numArray);    
-        equationArray.push(numArray[numArray.length -1]);        
-        tempArray = [];            
-        num = "";            
-        tempArray.push(num);            
+        tempNumberPush(numArray);        
         selectedOperator = 'divide';    
         pushToHolder();
        
         }
         
     else if (sign == 'multiply') {
-        tempNumber = Number(numArray);
-        equationArray.push(numArray[numArray.length -1]);            
-        tempArray = [];            
-        num = "";            
-        tempArray.push(num);            
+        tempNumberPush(numArray);            
         selectedOperator = 'multiply';   
         pushToHolder();
         
         }
 
-    // not yet working.
     else if (sign == 'clear') {
         console.log("clear");
         numArray = [];       
@@ -129,6 +114,7 @@ function operator(sign) {
         tempNumber = "";
         selectedOperator = '';   
         numberHolderArray = [];
+        operatorHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = "";
         getNumber(0);
     }
