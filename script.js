@@ -11,7 +11,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
 var numberHolderArray = [];
-
+var operatorHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
 let equationArray = [];
@@ -22,7 +22,8 @@ function pushToHolder() {
  if ( equationArray.length >= 1) {
     
     numberHolderArray.push(equationArray[equationArray.length -1]);
-    console.log(numberHolderArray +"This is the numberholder");
+    console.log(numberHolderArray + "This is the numberholder");
+    operatorHolderArray.push(selectedOperator);
     }; 
 };
 
@@ -69,10 +70,9 @@ function getNumber(num) {
 
 function operator(sign) {
 
-    if (sign == add) {
+    if (sign == 'add') {
         tempNumber = Number(numArray);
         equationArray.push(numArray[numArray.length -1]);
-        //calcNumber.one = numArray;
         console.log("plus");
         //holds first number from equation.
         tempArray = [];
@@ -80,42 +80,42 @@ function operator(sign) {
         num = "";
         //add next part of equation.
         tempArray.push(num);
-        selectedOperator = add;
+        selectedOperator = 'add';
         pushToHolder();
      
         //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
 
-    else if (sign == subtract) {
+    else if (sign == 'subtract') {
         tempNumber = Number(numArray);
         equationArray.push(numArray[numArray.length -1]);
         tempArray = [];
         num = "";
         tempArray.push(num);
-        selectedOperator = subtract;
+        selectedOperator = 'subtract';
         pushToHolder();
 
     
         }
 
-    else if (sign == divide) {
+    else if (sign == 'divide') {
         tempNumber = Number(numArray);    
         equationArray.push(numArray[numArray.length -1]);        
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
-        selectedOperator = divide;    
+        selectedOperator = 'divide';    
         pushToHolder();
        
         }
         
-    else if (sign == multiply) {
+    else if (sign == 'multiply') {
         tempNumber = Number(numArray);
         equationArray.push(numArray[numArray.length -1]);            
         tempArray = [];            
         num = "";            
         tempArray.push(num);            
-        selectedOperator = multiply;   
+        selectedOperator = 'multiply';   
         pushToHolder();
         
         }
@@ -146,7 +146,7 @@ will need to store operator signs in correct order too.
 
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
-    if (selectedOperator == add) {
+    if (selectedOperator == 'add') {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");  
         document.getElementById('numberDisplay').innerHTML='';
@@ -159,7 +159,7 @@ function equals(selectedOperator) {
         displayElement.appendChild(printNumber);
         document.getElementById("equationDisplay").innerHTML = num1 + " + " + num2 + " = ";
     }
-    else if (selectedOperator == subtract) {
+    else if (selectedOperator == 'subtract') {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
@@ -173,7 +173,7 @@ function equals(selectedOperator) {
         document.getElementById("equationDisplay").innerHTML = num1 + " - " + num2 + " = ";
     }
        
-    else if (selectedOperator == divide) {
+    else if (selectedOperator == 'divide') {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
@@ -194,7 +194,7 @@ function equals(selectedOperator) {
         
     }
     
-    else if (selectedOperator == multiply) {
+    else if (selectedOperator == 'multiply') {
         equationArray.push(numArray[numArray.length -1]);
         console.log("equals");
         document.getElementById('numberDisplay').innerHTML='';
