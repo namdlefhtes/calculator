@@ -8,7 +8,6 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
 var numberHolderArray = [];
-var operatorHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
 let equationArray = [];
@@ -24,16 +23,17 @@ function tempNumberPush() {
     //add next part of equation.
     tempArray.push(num);
 
-}
+};
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
-    
     numberHolderArray.push(equationArray[equationArray.length -1]);
-    console.log(numberHolderArray + "This is the numberholder");
-    operatorHolderArray.push(selectedOperator);
-    }; 
+    console.log("This is the numberholder "+numberHolderArray);
+    numberHolderArray.push(selectedOperator);
+    console.log("This is the operatorholderarray " +operatorHolderArray)
+    }
 };
+
 
 function getNumber(num) {
     if (typeof(num) === "number" /*|| num == "." */ ) {
@@ -66,11 +66,8 @@ function getNumber(num) {
                 let printError = document.createTextNode("Error: number can only contain one decimal.");
                 errorElement.appendChild(printError);
                 document.getElementById("numberDisplay").innerHTML = joinedNumber;
-                
             }  
-
     }
-
 
     }
 
@@ -88,22 +85,18 @@ function operator(sign) {
         tempNumberPush(numArray);
         selectedOperator = 'subtract';
         pushToHolder();
-
-    
         }
 
     else if (sign == 'divide') {
         tempNumberPush(numArray);        
         selectedOperator = 'divide';    
-        pushToHolder();
-       
+        pushToHolder(); 
         }
         
     else if (sign == 'multiply') {
         tempNumberPush(numArray);            
         selectedOperator = 'multiply';   
-        pushToHolder();
-        
+        pushToHolder();  
         }
 
     else if (sign == 'clear') {
@@ -130,6 +123,8 @@ will need to store operator signs in correct order too.
 
 */
 
+
+/* NEW EQUALS 
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
     if (selectedOperator == 'add') {
@@ -194,4 +189,4 @@ function equals(selectedOperator) {
         document.getElementById("equationDisplay").innerHTML = num1 + " x " + num2 + " = ";
     }
 
-}
+} */
