@@ -7,7 +7,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
-var numberHolderArray = [];
+var valueHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
 let equationArray = [];
@@ -27,10 +27,10 @@ function tempNumberPush() {
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
-    numberHolderArray.push(equationArray[equationArray.length -1]);
-    console.log("This is the numberholder "+numberHolderArray);
-    numberHolderArray.push(selectedOperator);
-    console.log("This is the operatorholderarray " +operatorHolderArray)
+    valueHolderArray.push(equationArray[equationArray.length -1]);
+    console.log("This is the valueholder "+valueHolderArray);
+    valueHolderArray.push(selectedOperator);
+    
     }
 };
 
@@ -106,23 +106,34 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
-        numberHolderArray = [];
+        valueHolderArray = [];
         operatorHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = "";
         getNumber(0);
     }
-       //adds most recent number to numberHolderArray following
+  
 
       
     }
 ;     
    
-/* refactor to calculate and store in numberHolderArry  
+/* refactor to calculate and store in valueHolderArry  
 automatically everytime second part as added, not on equals. 
 will need to store operator signs in correct order too.
 
 */
 
+function equals(valueHolderArray) {
+    //takes most recent number from numArray.
+    equationArray.push(numArray[numArray.length -1]);
+    document.getElementById('numberDisplay').innerHTML='';
+        for (i= 0; i < valueHolderArray.length; i ++ ) {
+            console.log(i);
+
+        }
+    //let result = Number()
+
+};
 
 /* NEW EQUALS 
 function equals(selectedOperator) {
