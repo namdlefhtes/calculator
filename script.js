@@ -8,6 +8,7 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
 var valueHolderArray = [];
+var operatorHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
 let equationArray = [];
@@ -29,7 +30,7 @@ function pushToHolder() {
  if ( equationArray.length >= 1) {
     valueHolderArray.push(equationArray[equationArray.length -1]);
     console.log("This is the valueholder "+valueHolderArray);
-    valueHolderArray.push(selectedOperator);
+    operatorHolderArray.push(selectedOperator);
     
     }
 };
@@ -123,15 +124,19 @@ will need to store operator signs in correct order too.
 
 */
 
-function equals(valueHolderArray) {
+function equals() {
     //takes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
-        for (i= 0; i < valueHolderArray.length; i ++ ) {
-            console.log(i);
-
+    add = +;
+    subtract = -;
+    divide = /;
+    multiply = *;
+ /* I think this will have to be a loop to go through possible number of parts of equation.
+    let result = Number(valueHolderArray[i]) + operatorHolderArray[i];
+    
         }
-    //let result = Number()
+   */ 
 
 };
 
