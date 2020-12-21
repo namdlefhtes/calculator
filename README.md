@@ -13,3 +13,13 @@ get equals to calculate based on stored operators + contents of numberHolderArra
 2020-12-20
 
 keep working on equals function. 
+
+2020-12-21
+
+current issue: 
+
+I have one operatorHolderArray that stores my operators, and valueHolderArray that stores my operand numbers.
+
+I can't get them to interact as an equation in the result at line 136.  
+
+keep working on this

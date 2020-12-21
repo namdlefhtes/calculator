@@ -133,8 +133,11 @@ function equals() {
     valueHolderArray.push(equationArray[equationArray.length -1]);
     // need to pass in operator type to have it add/subtract/etc the first two values. 
         if ( equationArray.length <= 2 ) {
-            result = Number( valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1] ); 
-            console.log("this is the result "+result);
+            num1 = valueHolderArray[0];
+            num2 = valueHolderArray[1];
+            op1 = operatorHolderArray[0];
+            //result = 
+            //console.log("this is the result "+result);
         }
         
         else if ( equationArray.length = 3 ) {
