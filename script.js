@@ -24,13 +24,14 @@ function tempNumberPush() {
     //add next part of equation.
     tempArray.push(num);
 
+
 };
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
     valueHolderArray.push(equationArray[equationArray.length -1]);
-    console.log("This is the valueholder "+valueHolderArray);
     operatorHolderArray.push(selectedOperator);
+    console.log(selectedOperator);
     
     }
 };
@@ -47,6 +48,7 @@ function getNumber(num) {
         let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
+        console.log(joinedNumber);
           
     }
 
@@ -74,11 +76,11 @@ function getNumber(num) {
 
 function operator(sign) {
 
-    if (sign == 'add') {
-        tempNumberPush(numArray);
-        selectedOperator = 'add';
-        pushToHolder();
-     
+   if (sign == 'add') {
+            tempNumberPush(numArray);
+            selectedOperator = '+';
+            pushToHolder(selectedOperator);
+
         //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
 
@@ -128,19 +130,28 @@ function equals() {
     //takes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
-    add = +;
-    subtract = -;
-    divide = /;
-    multiply = *;
+    valueHolderArray.push(equationArray[equationArray.length -1]);
+    // need to pass in operator type to have it add/subtract/etc the first two values. 
+    var result = valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1]; 
+
+    let displayElement = document.getElementById("numberDisplay");
+    let printNumber = document.createTextNode(result);
+    displayElement.appendChild(printNumber);
+    //document.getElementById("equationDisplay").innerHTML = num1 + " + " + num2 + " = ";
+           
+
+        
+    };
+
  /* I think this will have to be a loop to go through possible number of parts of equation.
     let result = Number(valueHolderArray[i]) + operatorHolderArray[i];
     
         }
    */ 
 
-};
 
-/* NEW EQUALS 
+
+/* SETTING UP NEW EQUALS above
 function equals(selectedOperator) {
     // refactor to use single array with positions I think.
     if (selectedOperator == 'add') {

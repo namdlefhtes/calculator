@@ -10,3 +10,6 @@ to do:
 set up array to store operators in order they are called.
 get equals to calculate based on stored operators + contents of numberHolderArray.
 
+2020-12-20
+
+keep working on equals function. 
