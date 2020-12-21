@@ -86,19 +86,19 @@ function operator(sign) {
 
     else if (sign == 'subtract') {
         tempNumberPush(numArray);
-        selectedOperator = 'subtract';
+        selectedOperator = '-';
         pushToHolder();
         }
 
     else if (sign == 'divide') {
         tempNumberPush(numArray);        
-        selectedOperator = 'divide';    
+        selectedOperator = '/';    
         pushToHolder(); 
         }
         
     else if (sign == 'multiply') {
         tempNumberPush(numArray);            
-        selectedOperator = 'multiply';   
+        selectedOperator = '*';   
         pushToHolder();  
         }
 
@@ -132,7 +132,16 @@ function equals() {
     document.getElementById('numberDisplay').innerHTML='';
     valueHolderArray.push(equationArray[equationArray.length -1]);
     // need to pass in operator type to have it add/subtract/etc the first two values. 
-    var result = valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1]; 
+        if ( equationArray.length <= 2 ) {
+            result = Number( valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1] ); 
+            console.log("this is the result "+result);
+        }
+        
+        else if ( equationArray.length = 3 ) {
+            result = valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1];
+
+        }
+
 
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
