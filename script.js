@@ -129,9 +129,13 @@ function equals() {
     document.getElementById('numberDisplay').innerHTML='';
     // need to pass in operator type to have it add/subtract/etc the first two values. 
         if ( equationArray.length <= 2 ) {
-            for (i=0; i <= equationArray.length; i++  ) {
-                num = equationArray[i];
-                console.log(num);
+            for (i=0; i <= equationArray.length; i++) {
+                operandOne = equationArray.shift();
+                operandTwo = equationArray.shift();
+                operandThree = equationArray.shift();
+                operandFour = equationArray.shift();
+                console.log("This is the operand"+operandOne);
+                console.log("This is the operand"+operandTwo);
            
             }
         }
