@@ -18,7 +18,6 @@ let operators = {
     '-': function(operandOne,operandTwo) {return operandOne - operandTwo },
     '*': function(operandOne,operandTwo) {return operandOne * operandTwo },
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
-
 };
 
 function tempNumberPush() {
