@@ -13,6 +13,14 @@ let numArray = [];
 let equationArray = [];
 var num = "";
 
+let operators = {
+    '+': function(operandOne,operandTwo) {return operandOne + operandTwo },
+    '-': function(operandOne,operandTwo) {return operandOne - operandTwo },
+    '*': function(operandOne,operandTwo) {return operandOne * operandTwo },
+    '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
+
+};
+
 function tempNumberPush() {
     tempNumber = Number(numArray);
     equationArray.push(numArray[numArray.length -1]);
@@ -131,20 +139,22 @@ function equals() {
         if ( equationArray.length <= 2 ) {
             for (i=0; i <= equationArray.length; i++) {
                 operandOne = equationArray.shift();
+                operatorOne = operatorHolderArray.shift();
                 operandTwo = equationArray.shift();
-                operandThree = equationArray.shift();
-                operandFour = equationArray.shift();
-                console.log("This is the operand"+operandOne);
-                console.log("This is the operand"+operandTwo);
-           
+                result = operators[operatorOne](operandOne,operandTwo)
+                //operandThree = equationArray.shift();
+                //operandFour = equationArray.shift();        
+               
+                    
             }
+
+            
         }
         
-/*
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
-        */
+    
     };
 
 
