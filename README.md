@@ -23,3 +23,7 @@ I have one operatorHolderArray that stores my operators, and valueHolderArray th
 I can't get them to interact as an equation in the result at line 136.  
 
 keep working on this
+
+2020-12-22
+
+equals still not working. trying for loop to feed in each number from valueHolderArray. 

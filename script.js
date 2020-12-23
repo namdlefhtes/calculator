@@ -7,7 +7,6 @@ https://www.theodinproject.com/courses/foundations/lessons/calculator
 
 //holds values. will need to use for multi part equations. not sure it will work as I want.
 
-var valueHolderArray = [];
 var operatorHolderArray = [];
 let tempArray = [] ;
 let numArray = [];
@@ -29,7 +28,6 @@ function tempNumberPush() {
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
-    valueHolderArray.push(equationArray[equationArray.length -1]);
     operatorHolderArray.push(selectedOperator);
     console.log(selectedOperator);
     
@@ -109,7 +107,6 @@ function operator(sign) {
         num = "";   
         tempNumber = "";
         selectedOperator = '';   
-        valueHolderArray = [];
         operatorHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = "";
         getNumber(0);
@@ -130,36 +127,21 @@ function equals() {
     //takes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
-    valueHolderArray.push(equationArray[equationArray.length -1]);
     // need to pass in operator type to have it add/subtract/etc the first two values. 
         if ( equationArray.length <= 2 ) {
-            num1 = valueHolderArray[0];
-            num2 = valueHolderArray[1];
-            op1 = operatorHolderArray[0];
-            //result = 
-            //console.log("this is the result "+result);
+            for (i=0; i <= equationArray.length; i++  ) {
+                num = equationArray[i];
+                console.log(num);
+           
+            }
         }
         
-        else if ( equationArray.length = 3 ) {
-            result = valueHolderArray[0] + operatorHolderArray[0] + valueHolderArray[1];
-
-        }
-
-
+/*
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
-    //document.getElementById("equationDisplay").innerHTML = num1 + " + " + num2 + " = ";
-           
-
-        
+        */
     };
-
- /* I think this will have to be a loop to go through possible number of parts of equation.
-    let result = Number(valueHolderArray[i]) + operatorHolderArray[i];
-    
-        }
-   */ 
 
 
 
