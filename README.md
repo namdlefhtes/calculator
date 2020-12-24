@@ -31,3 +31,7 @@ equals still not working. trying for loop to feed in each number from valueHolde
 2020-12-23
 
 breakthrough. Basic Equations working now with equals() . need to set up for multi-part equations but on the right path. I think new variable to concatenate the results of each bit of the equation will be necessary. 
+
+2020-12-24 
+
+extremely close I think. Resume at equals() function. Once operandTwo stores 3rd value for 3 part equation. it should work.
