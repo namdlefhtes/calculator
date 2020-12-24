@@ -130,29 +130,43 @@ will need to store operator signs in correct order too.
 
 */
 
+//fires on click.
+
+
+
 function equals() {
     //takes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     // need to pass in operator type to have it add/subtract/etc the first two values. 
-        if ( equationArray.length <= 2 ) {
+           if ( operatorHolderArray.length < 2 ) {
             for (i=0; i <= equationArray.length; i++) {
                 operandOne = equationArray.shift();
                 operatorOne = operatorHolderArray.shift();
                 operandTwo = equationArray.shift();
                 result = operators[operatorOne](operandOne,operandTwo)
                 //operandThree = equationArray.shift();
-                //operandFour = equationArray.shift();        
-               
-                    
-            }
-
-            
-        }
+                //operandFour = equationArray.shift();      
+                let displayElement = document.getElementById("numberDisplay");
+                let printNumber = document.createTextNode(result);
+                displayElement.appendChild(printNumber);
+            };
         
-    let displayElement = document.getElementById("numberDisplay");
-    let printNumber = document.createTextNode(result);
-    displayElement.appendChild(printNumber);
+        
+                /*if someone pushes equals, allows math
+                else if ( result > 0 || operatorHolderArray.length >= 2) {
+                    operandOne = result;
+                    result = "";
+                    operandTwo = equationArray.shift();
+                    
+                }   */ 
+                
+               /* else if (result == Infinity) {
+                    displayElement = document.getElementById("numberDisplay");
+                     printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
+                     displayElement.appendChild(printNumber);
+                } */
+            }
     
     };
 
