@@ -54,6 +54,12 @@ function getNumber(num) {
         let printNumber = document.createTextNode(joinedNumber);
         displayElement.appendChild(printNumber);
         console.log(joinedNumber);
+
+        //initiate equals when equation becomes multi-part.
+        if ( operatorHolderArray.length >= 2 ) {
+            console.log(operatorHolderArray+"testing if");
+            equals();
+        }
           
     }
 
@@ -75,6 +81,7 @@ function getNumber(num) {
                 errorElement.appendChild(printError);
                 document.getElementById("numberDisplay").innerHTML = joinedNumber;
             }  
+    
     }
 
     }
@@ -123,23 +130,14 @@ function operator(sign) {
       
     }
 ;     
-   
-/* refactor to calculate and store in valueHolderArry  
-automatically everytime second part as added, not on equals. 
-will need to store operator signs in correct order too.
-
-*/
 
 //fires on click.
-
-
-
 function equals() {
     //takes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     // need to pass in operator type to have it add/subtract/etc the first two values. 
-           if ( operatorHolderArray.length < 2 ) {
+           if ( operatorHolderArray.length <= 2 ) {
             for (i=0; i <= equationArray.length; i++) {
                 operandOne = equationArray.shift();
                 operatorOne = operatorHolderArray.shift();
@@ -150,91 +148,21 @@ function equals() {
                 let displayElement = document.getElementById("numberDisplay");
                 let printNumber = document.createTextNode(result);
                 displayElement.appendChild(printNumber);
-            };
-        
-        
-                /*if someone pushes equals, allows math
-                else if ( result > 0 || operatorHolderArray.length >= 2) {
+            }
+    
+                //if someone pushes equals, allows math
+        /*  }  else if ( result > 0 || operatorHolderArray.length >= 2) {
                     operandOne = result;
                     result = "";
                     operandTwo = equationArray.shift();
                     
-                }   */ 
+                }   */
                 
                /* else if (result == Infinity) {
                     displayElement = document.getElementById("numberDisplay");
                      printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
                      displayElement.appendChild(printNumber);
                 } */
-            }
+            
     
     };
-
-
-
-/* SETTING UP NEW EQUALS above
-function equals(selectedOperator) {
-    // refactor to use single array with positions I think.
-    if (selectedOperator == 'add') {
-        equationArray.push(numArray[numArray.length -1]);
-        console.log("equals");  
-        document.getElementById('numberDisplay').innerHTML='';
-        num1 = equationArray[equationArray.length -2]; 
-        num2 = equationArray[equationArray.length -1];
-        let result = Number(num1 + num2);
-        console.log(result);
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = num1 + " + " + num2 + " = ";
-    }
-    else if (selectedOperator == 'subtract') {
-        equationArray.push(numArray[numArray.length -1]);
-        console.log("equals");
-        document.getElementById('numberDisplay').innerHTML='';
-        num1 = equationArray[equationArray.length -2]; 
-        num2 = equationArray[equationArray.length -1];
-        let result = Number(num1 - num2);
-        console.log(result);
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = num1 + " - " + num2 + " = ";
-    }
-       
-    else if (selectedOperator == 'divide') {
-        equationArray.push(numArray[numArray.length -1]);
-        console.log("equals");
-        document.getElementById('numberDisplay').innerHTML='';
-        num1 = equationArray[equationArray.length -2]; 
-        num2 = equationArray[equationArray.length -1];
-        let result = Number(num1 / num2);
-        console.log(result);
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = num1 + " ÷ " + num2 + " = ";
-
-            if (result == Infinity) {
-                displayElement = document.getElementById("numberDisplay");
-                 printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
-                 displayElement.appendChild(printNumber);
-            }
-        
-    }
-    
-    else if (selectedOperator == 'multiply') {
-        equationArray.push(numArray[numArray.length -1]);
-        console.log("equals");
-        document.getElementById('numberDisplay').innerHTML='';
-        num1 = equationArray[equationArray.length -2]; 
-        num2 = equationArray[equationArray.length -1];
-        result = Number(num1 * num2);
-        console.log(result);
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        document.getElementById("equationDisplay").innerHTML = num1 + " x " + num2 + " = ";
-    }
-
-} */
