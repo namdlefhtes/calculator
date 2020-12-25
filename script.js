@@ -37,7 +37,6 @@ function pushToHolder() {
  if ( equationArray.length >= 1) {
     operatorHolderArray.push(selectedOperator);
     console.log(selectedOperator);
-    
     }
 };
 
@@ -57,7 +56,7 @@ function getNumber(num) {
 
         //initiate equals when equation becomes multi-part and next number is added.
         if ( operatorHolderArray.length >= 2 ) {
-            equals();
+            preEquals();
         }
           
     }
@@ -130,45 +129,29 @@ function operator(sign) {
     }
 ;     
 
-//fires on click.
+//fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
+
+function preEquals() {
+    operandOne = result;
+    operandTwo = equationArray.pop();
+    result = "";
+    result = operators[operatorOne](operandOne,operandTwo);
+    displayElement = document.getElementById("numberDisplay");
+    printNumber = document.createTextNode(result);
+    displayElement.appendChild(printNumber);  
+};
+
 function equals() {
     //pushes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
-        
-            for (i=0; i <= equationArray.length; i++) {
-                operandOne = equationArray.shift();
-                operatorOne = operatorHolderArray.shift();
-                operandTwo = equationArray.shift();
-                result = operators[operatorOne](operandOne,operandTwo)     
-                let displayElement = document.getElementById("numberDisplay");
-                let printNumber = document.createTextNode(result);
-                displayElement.appendChild(printNumber);
-                    // fires when > 1 operator is added or equals has been hit to get result. 
-                    if ( result > 0 || operatorHolderArray.length >= 2) {
-                        operandOne = result;
-                       // operandTwo = equationArray.pop();
-                        result = "";
-                        //equationArray.shift();
-                        //equationArray.push(operandOne);
-                        
-                    }
-                }
-}
-                //if someone pushes equals, allows math
-        /*  }  else if ( result > 0 || operatorHolderArray.length >= 2) {
-                    operandOne = result;
-                    result = "";
-                    operandTwo = equationArray.shift();
-                    
-                }   
-                
-                else if (result == Infinity) {
-                    displayElement = document.getElementById("numberDisplay");
-                     printNumber = document.createTextNode("Error: Division by 0 attempted. Abort");
-                     displayElement.appendChild(printNumber);
-                } */
-
+    //operand combines first two parts of 
+    operandOne = equationArray.shift();
+    operatorOne = operatorHolderArray.shift();
+    operandTwo = equationArray.shift();
+    result = operators[operatorOne](operandOne,operandTwo)
+    let displayElement = document.getElementById("numberDisplay");
+    let printNumber = document.createTextNode(result);
+    displayElement.appendChild(printNumber);
          
-
-            
+    }   

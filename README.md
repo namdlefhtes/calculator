@@ -35,3 +35,7 @@ breakthrough. Basic Equations working now with equals() . need to set up for mul
 2020-12-24 
 
 extremely close I think. Resume at equals() function. Once operandTwo stores 3rd value for 3 part equation. it should work.
+
+2020-12-25
+
+reworking a bit. added preEquals function to take care of combining first parts of the equation as clicking the equals button and firing equals() was causing issues. should be better. 
