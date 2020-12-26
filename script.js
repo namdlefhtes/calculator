@@ -57,6 +57,7 @@ function getNumber(num) {
         //initiate equals when equation becomes multi-part and next number is added.
         if ( operatorHolderArray.length >= 2 ) {
             preEquals();
+        
         }
           
     }
@@ -132,13 +133,17 @@ function operator(sign) {
 //fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
 
 function preEquals() {
-    operandOne = result;
-    operandTwo = equationArray.pop();
+    operandOne = equationArray.shift();
+    operatorOne = operatorHolderArray.shift();
+    operandTwo = equationArray.shift();
+    result = operators[operatorOne](operandOne,operandTwo);
+    operandOne = result; // place result of right-hand side of equation in operandOne.
+    operandTwo = joinedNumber;
     result = "";
     result = operators[operatorOne](operandOne,operandTwo);
     displayElement = document.getElementById("numberDisplay");
     printNumber = document.createTextNode(result);
-    displayElement.appendChild(printNumber);  
+    displayElement.appendChild(printNumber);
 };
 
 function equals() {
@@ -154,4 +159,5 @@ function equals() {
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
          
-    }   
+    };
+
