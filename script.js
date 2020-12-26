@@ -49,9 +49,12 @@ function getNumber(num) {
         //console.log(joinedNumber);
         numArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
-        let displayElement = document.getElementById("numberDisplay");
+        /*let displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(joinedNumber);
-        displayElement.appendChild(printNumber);
+        displayElement.appendChild(printNumber); */
+        equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode(joinedNumber);
+        equationDisplay.appendChild(printEquation);
         console.log(joinedNumber);
 
         //initiate equals when equation becomes multi-part and next number is added.
@@ -91,6 +94,9 @@ function operator(sign) {
             tempNumberPush(numArray);
             selectedOperator = '+';
             pushToHolder(selectedOperator);
+            equationDisplay = document.getElementById("equationDisplay")
+            printEquation = document.createTextNode("+");
+            equationDisplay.appendChild(printEquation);
 
         //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
@@ -99,18 +105,27 @@ function operator(sign) {
         tempNumberPush(numArray);
         selectedOperator = '-';
         pushToHolder();
+        equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode("-");
+        equationDisplay.appendChild(printEquation);
         }
 
     else if (sign == 'divide') {
         tempNumberPush(numArray);        
         selectedOperator = '/';    
-        pushToHolder(); 
+        pushToHolder();
+        equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode("÷");
+        equationDisplay.appendChild(printEquation); 
         }
         
     else if (sign == 'multiply') {
         tempNumberPush(numArray);            
         selectedOperator = '*';   
-        pushToHolder();  
+        pushToHolder();
+        equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode("x");
+        equationDisplay.appendChild(printEquation);  
         }
 
     else if (sign == 'clear') {
@@ -137,6 +152,10 @@ function preEquals() {
     operatorOne = operatorHolderArray.shift();
     operandTwo = equationArray.shift();
     result = operators[operatorOne](operandOne,operandTwo);
+    equationDisplay = document.getElementById("equationDisplay")
+    printEquation = document.createTextNode("test");
+    equationDisplay.appendChild(printEquation);
+
     operandOne = result; // place result of right-hand side of equation in operandOne.
     operandTwo = joinedNumber;
     result = "";
