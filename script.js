@@ -134,8 +134,8 @@ function operator(sign) {
         tempNumber = "";
         selectedOperator = '';   
         operatorHolderArray = [];
-        document.getElementById("equationDisplay").innerHTML = "";
-        getNumber(0);
+        document.getElementById("equationDisplay").innerHTML = ""; 
+        document.getElementById('numberDisplay').innerHTML="0";
     }
   
 

@@ -39,3 +39,7 @@ extremely close I think. Resume at equals() function. Once operandTwo stores 3rd
 2020-12-25
 
 reworking a bit. added preEquals function to take care of combining first parts of the equation as clicking the equals button and firing equals() was causing issues. should be better. 
+
+2020-12-26
+
+closer. changed numbers to print above results of equation. Problem is numbers are printing multiple times in display now. 
