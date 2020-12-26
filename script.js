@@ -97,8 +97,6 @@ function operator(sign) {
             equationDisplay = document.getElementById("equationDisplay")
             printEquation = document.createTextNode("+");
             equationDisplay.appendChild(printEquation);
-
-        //document.getElementById("equationDisplay").innerHTML = equationArray + " + ";
     }
 
     else if (sign == 'subtract') {
@@ -127,7 +125,7 @@ function operator(sign) {
         printEquation = document.createTextNode("x");
         equationDisplay.appendChild(printEquation);  
         }
-
+    
     else if (sign == 'clear') {
         console.log("clear");
         numArray = [];       
@@ -177,6 +175,9 @@ function equals() {
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
+    equationDisplay = document.getElementById("equationDisplay")
+    printEquation = document.createTextNode("=");
+    equationDisplay.appendChild(printEquation);  
          
     };
 
