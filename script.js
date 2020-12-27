@@ -60,7 +60,8 @@ function getNumber(num) {
             equationDisplay.appendChild(printEquation);
         }
 
-        else if ( operatorHolderArray.length >=1  ) {
+        else if ( operatorHolderArray.length >= 1 ) {
+            document.getElementById('equationDisplay').innerHTML=(equationArray[0]+" "+operatorHolderArray[0] + " ");
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
@@ -78,10 +79,10 @@ function getNumber(num) {
         tempArray.push(num);
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
-        document.getElementById('numberDisplay').innerHTML='';
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(joinedNumber + ".");
-        displayElement.appendChild(printNumber);
+        let equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(".");
+        equationDisplay.appendChild(printEquation);
+
              if  ( numArray.includes(NaN) == true ) {
                 numArray.pop();
                 tempArray.pop();
