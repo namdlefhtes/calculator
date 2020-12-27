@@ -42,20 +42,17 @@ function pushToHolder() {
 
 
 function getNumber(num) {
-    if (typeof(num) === "number" /*|| num == "." */ ) {
+    if (typeof(num) === "number") {
         //joinedNumber is the main number.
         tempArray.push(num);  
+        console.log(tempArray+"temparray values");
         joinedNumber = Number(tempArray.join(""));
-        //console.log(joinedNumber);
+        console.log(joinedNumber+"joinedNumber values");
         numArray.push(joinedNumber);
-        document.getElementById('numberDisplay').innerHTML='';
-        /*let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(joinedNumber);
-        displayElement.appendChild(printNumber); */
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode(joinedNumber);
+        document.getElementById('equationDisplay').innerHTML='';
+        let equationDisplay = document.getElementById("equationDisplay")
+        let printEquation = document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
-        console.log(joinedNumber);
 
         //initiate equals when equation becomes multi-part and next number is added.
         if ( operatorHolderArray.length >= 2 ) {
