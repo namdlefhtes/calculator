@@ -45,19 +45,31 @@ function getNumber(num) {
     if (typeof(num) === "number") {
         //joinedNumber is the main number.
         tempArray.push(num);  
-        console.log(tempArray+"temparray values");
         joinedNumber = Number(tempArray.join(""));
-        console.log(joinedNumber+"joinedNumber values");
         numArray.push(joinedNumber);
-        document.getElementById('equationDisplay').innerHTML='';
+       /* document.getElementById('equationDisplay').innerHTML='';
         let equationDisplay = document.getElementById("equationDisplay")
         let printEquation = document.createTextNode(joinedNumber);
-        equationDisplay.appendChild(printEquation);
+        equationDisplay.appendChild(printEquation); */
 
         //initiate equals when equation becomes multi-part and next number is added.
-        if ( operatorHolderArray.length >= 2 ) {
-            preEquals();
-        
+        if ( operatorHolderArray.length < 1 ) {
+            document.getElementById('equationDisplay').innerHTML='';
+            let equationDisplay = document.getElementById("equationDisplay");
+            let printEquation = document.createTextNode(joinedNumber);
+            equationDisplay.appendChild(printEquation);
+        }
+
+        else if ( operatorHolderArray.length >=1  ) {
+            let equationDisplay = document.getElementById("equationDisplay");
+            let printEquation = document.createTextNode(joinedNumber);
+            equationDisplay.appendChild(printEquation);
+        }
+
+        else if ( operatorHolderArray.length >= 2 ) {
+            preEquals(); 
+
+           
         }
           
     }
@@ -91,8 +103,8 @@ function operator(sign) {
             tempNumberPush(numArray);
             selectedOperator = '+';
             pushToHolder(selectedOperator);
-            equationDisplay = document.getElementById("equationDisplay")
-            printEquation = document.createTextNode("+");
+            equationDisplay = document.getElementById("equationDisplay");
+            printEquation = document.createTextNode(" + ");
             equationDisplay.appendChild(printEquation);
     }
 
@@ -100,8 +112,8 @@ function operator(sign) {
         tempNumberPush(numArray);
         selectedOperator = '-';
         pushToHolder();
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode("-");
+        equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(" - ");
         equationDisplay.appendChild(printEquation);
         }
 
@@ -109,8 +121,8 @@ function operator(sign) {
         tempNumberPush(numArray);        
         selectedOperator = '/';    
         pushToHolder();
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode("÷");
+        equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(" ÷ ");
         equationDisplay.appendChild(printEquation); 
         }
         
@@ -118,8 +130,8 @@ function operator(sign) {
         tempNumberPush(numArray);            
         selectedOperator = '*';   
         pushToHolder();
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode("x");
+        equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(" x ");
         equationDisplay.appendChild(printEquation);  
         }
     
@@ -173,7 +185,7 @@ function equals() {
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
     equationDisplay = document.getElementById("equationDisplay")
-    printEquation = document.createTextNode("=");
+    printEquation = document.createTextNode(" = ");
     equationDisplay.appendChild(printEquation);  
          
     };
