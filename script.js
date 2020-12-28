@@ -36,7 +36,6 @@ function tempNumberPush() {
 function pushToHolder() {
  if ( equationArray.length >= 1) {
     operatorHolderArray.push(selectedOperator);
-    console.log(selectedOperator);
     }
 };
 
@@ -47,11 +46,6 @@ function getNumber(num) {
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
-       /* document.getElementById('equationDisplay').innerHTML='';
-        let equationDisplay = document.getElementById("equationDisplay")
-        let printEquation = document.createTextNode(joinedNumber);
-        equationDisplay.appendChild(printEquation); */
-
         //initiate equals when equation becomes multi-part and next number is added.
         if ( operatorHolderArray.length < 1 ) {
             document.getElementById('equationDisplay').innerHTML='';
@@ -60,18 +54,15 @@ function getNumber(num) {
             equationDisplay.appendChild(printEquation);
         }
 
-        else if ( operatorHolderArray.length >= 1 ) {
-            console.log(currentOperator);
+        else if ( operatorHolderArray.length == 1 ) {
             document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
         }
 
-        else if ( operatorHolderArray.length >= 2 ) {
-            preEquals(); 
-
-           
+        else if ( operatorHolderArray.length >= 2) {
+            preEquals();            
         }
           
     }
@@ -153,6 +144,8 @@ function operator(sign) {
         operatorHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = ""; 
         document.getElementById('numberDisplay').innerHTML="0";
+        document.getElementById('errorDisplay').innerHTML='';
+
     }
   
 
@@ -163,21 +156,17 @@ function operator(sign) {
 //fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
 
 function preEquals() {
+    originalOperands = equationArray[0] + " " + selectedOperator + " " + equationArray[1];
     operandOne = equationArray.shift();
     operatorOne = operatorHolderArray.shift();
     operandTwo = equationArray.shift();
     result = operators[operatorOne](operandOne,operandTwo);
-    equationDisplay = document.getElementById("equationDisplay")
-    printEquation = document.createTextNode("test");
-    equationDisplay.appendChild(printEquation);
-
     operandOne = result; // place result of right-hand side of equation in operandOne.
     operandTwo = joinedNumber;
-    result = "";
-    result = operators[operatorOne](operandOne,operandTwo);
-    displayElement = document.getElementById("numberDisplay");
-    printNumber = document.createTextNode(result);
-    displayElement.appendChild(printNumber);
+    equationDisplay = document.getElementById("equationDisplay")
+    printEquation = document.createTextNode(operandTwo);
+    equationDisplay.appendChild(printEquation);
+    equationArray.push(operandOne);    
 };
 
 function equals() {
@@ -190,13 +179,13 @@ function equals() {
     operandTwo = equationArray.shift();
     result = operators[operatorOne](operandOne,operandTwo)
     let displayElement = document.getElementById("numberDisplay");
-    let printNumber = document.createTextNode(result);
+    let printNumber = document.createTextNode(+result);
     displayElement.appendChild(printNumber);
     equationDisplay = document.getElementById("equationDisplay")
     printEquation = document.createTextNode(" = ");
     equationDisplay.appendChild(printEquation);  
+
         if (operandTwo == 0 && selectedOperator == '/') {
-        console.log("fail");
         document.getElementById('errorDisplay').innerHTML='';
         let errorElement = document.getElementById("errorDisplay");
         let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
