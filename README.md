@@ -46,3 +46,8 @@ closer. changed numbers to print above results of equation. Problem is numbers a
 
 2020-12-28
 
+math is actually working, but the display isn't working quite how I'd like.
+
+I want it to show "11 + 22 + 66 =" but it is displaying the calculated new operandOne of "33" and showing "33 + 66 =" instead. Also need to investigate equations with 4 or more parts. 
+
+work on CSS/design to make things bigger. It will be easier to troubleshoot.
