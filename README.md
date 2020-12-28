@@ -43,3 +43,6 @@ reworking a bit. added preEquals function to take care of combining first parts 
 2020-12-26
 
 closer. changed numbers to print above results of equation. Problem is numbers are printing multiple times in display now. 
+
+2020-12-28
+

@@ -60,7 +60,7 @@ function getNumber(num) {
             equationDisplay.appendChild(printEquation);
         }
 
-        else if ( operatorHolderArray.length == 1 ) {
+        else if ( operatorHolderArray.length >= 1 ) {
             console.log(currentOperator);
             document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
@@ -130,6 +130,7 @@ function operator(sign) {
         printEquation = document.createTextNode(" ÷ ");
         equationDisplay.appendChild(printEquation); 
         currentOperator = " ÷ ";
+
         }
         
     else if (sign == 'multiply') {
@@ -194,6 +195,14 @@ function equals() {
     equationDisplay = document.getElementById("equationDisplay")
     printEquation = document.createTextNode(" = ");
     equationDisplay.appendChild(printEquation);  
+        if (operandTwo == 0 && selectedOperator == '/') {
+        console.log("fail");
+        document.getElementById('errorDisplay').innerHTML='';
+        let errorElement = document.getElementById("errorDisplay");
+        let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+        errorElement.appendChild(printError);
+        }
+
          
     };
 
