@@ -61,7 +61,8 @@ function getNumber(num) {
         }
 
         else if ( operatorHolderArray.length >= 1 ) {
-            document.getElementById('equationDisplay').innerHTML=(equationArray[0]+" "+operatorHolderArray[0] + " ");
+            
+            document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
@@ -125,6 +126,7 @@ function operator(sign) {
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" ÷ ");
         equationDisplay.appendChild(printEquation); 
+        currentOperator = " ÷ ";
         }
         
     else if (sign == 'multiply') {
@@ -134,6 +136,7 @@ function operator(sign) {
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" x ");
         equationDisplay.appendChild(printEquation);  
+        currentOperator = " x ";
         }
     
     else if (sign == 'clear') {
