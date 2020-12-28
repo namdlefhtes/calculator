@@ -60,8 +60,8 @@ function getNumber(num) {
             equationDisplay.appendChild(printEquation);
         }
 
-        else if ( operatorHolderArray.length >= 1 ) {
-            
+        else if ( operatorHolderArray.length == 1 ) {
+            console.log(currentOperator);
             document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
@@ -108,6 +108,7 @@ function operator(sign) {
             equationDisplay = document.getElementById("equationDisplay");
             printEquation = document.createTextNode(" + ");
             equationDisplay.appendChild(printEquation);
+            currentOperator = " + ";
     }
 
     else if (sign == 'subtract') {
@@ -117,6 +118,8 @@ function operator(sign) {
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" - ");
         equationDisplay.appendChild(printEquation);
+        currentOperator == " - ";
+
         }
 
     else if (sign == 'divide') {
