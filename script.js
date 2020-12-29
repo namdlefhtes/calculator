@@ -62,7 +62,12 @@ function getNumber(num) {
         }
 
         else if ( operatorHolderArray.length >= 2) {
+            console.log(joinedNumber);
+            equationDisplay = document.getElementById("equationDisplay");
+            printEquation = document.createTextNode(joinedNumber+"test");
+            equationDisplay.appendChild(printEquation);
             preEquals();            
+           
         }
           
     }
@@ -157,17 +162,14 @@ function operator(sign) {
 //fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
 
 function preEquals() {
-    originalOperands = equationArray[0] + " " + selectedOperator + " " + equationArray[1];
-    operandOne = equationArray.shift();
-    operatorOne = operatorHolderArray.shift();
-    operandTwo = equationArray.shift();
+    operandOne = /* equationArray.shift(); */ equationArray[0];
+    operatorOne = operatorHolderArray[0]; 
+    operandTwo = /* equationArray.shift(); */ equationArray[1];
+    // calculates result of first two operands in equationArray.
     result = operators[operatorOne](operandOne,operandTwo);
     operandOne = result; // place result of right-hand side of equation in operandOne.
-    operandTwo = joinedNumber;
-    equationDisplay = document.getElementById("equationDisplay")
-    printEquation = document.createTextNode(operandTwo);
-    equationDisplay.appendChild(printEquation);
-    equationArray.push(operandOne);    
+    equationArray.push(operandOne);
+
 };
 
 function equals() {
@@ -175,9 +177,9 @@ function equals() {
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     //operand combines first two parts of 
-    operandOne = equationArray.shift();
-    operatorOne = operatorHolderArray.shift();
-    operandTwo = equationArray.shift();
+    operandOne =  result;
+    operatorOne = operatorHolderArray[0];
+    operandTwo = equationArray[equationArray.length -1];
     result = operators[operatorOne](operandOne,operandTwo)
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(+result);
