@@ -145,6 +145,7 @@ function operator(sign) {
         document.getElementById("equationDisplay").innerHTML = ""; 
         document.getElementById('numberDisplay').innerHTML="0";
         document.getElementById('errorDisplay').innerHTML='';
+        equationArray.pop();
 
     }
   
