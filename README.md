@@ -55,3 +55,7 @@ work on CSS/design to make things bigger. It will be easier to troubleshoot.
 2020-12-29
 
 display is sort of working, but it adds an extra number to the 3rd operand. I need to refactor code as it is not clear to me why I have tempNumberPush(numArray). I think this can be handled exclusively in getNumber() and operator(sign) .
+
+2020-12-30
+
+set up dev branch to refactor js. 
