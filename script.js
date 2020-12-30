@@ -21,7 +21,7 @@ let operators = {
 };
 
 function tempNumberPush() {
-    tempNumber = Number(numArray);
+    //tempNumber = Number(numArray);
     equationArray.push(numArray[numArray.length -1]);
     //holds first number from equation.
     tempArray = [];
@@ -29,7 +29,6 @@ function tempNumberPush() {
     num = "";
     //add next part of equation.
     tempArray.push(num);
-
 
 };
 
@@ -57,6 +56,7 @@ function getNumber(num) {
         else if ( operatorHolderArray.length == 1 ) {
             document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
+            
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
         }
@@ -64,7 +64,7 @@ function getNumber(num) {
         else if ( operatorHolderArray.length >= 2) {
             console.log(joinedNumber);
             equationDisplay = document.getElementById("equationDisplay");
-            printEquation = document.createTextNode(joinedNumber+"test");
+            printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
             preEquals();            
            
@@ -162,14 +162,16 @@ function operator(sign) {
 //fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
 
 function preEquals() {
-    operandOne = /* equationArray.shift(); */ equationArray[0];
+    
+    operandOne = equationArray.shift(); /*equationArray[0];*/
     operatorOne = operatorHolderArray[0]; 
-    operandTwo = /* equationArray.shift(); */ equationArray[1];
+    operandTwo = equationArray.shift(); /*equationArray[1]; */
     // calculates result of first two operands in equationArray.
     result = operators[operatorOne](operandOne,operandTwo);
     operandOne = result; // place result of right-hand side of equation in operandOne.
-    equationArray.push(operandOne);
-
+    //equationArray.push(operandOne);
+    //equationArray.push(joinedNumber);
+    
 };
 
 function equals() {
