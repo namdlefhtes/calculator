@@ -24,7 +24,6 @@ let operators = {
 // fires after operation clicked.
 function tempNumberPush() {
     //tempNumber = Number(numArray);
-    console.log("does this fire");
     equationArray.push(numArray[numArray.length -1]);
     //holds first number from equation.
     tempArray = [];
@@ -63,15 +62,14 @@ function getNumber(num) {
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
         }
-/*
+
         else if ( operatorHolderArray.length >= 2) {
-            console.log(joinedNumber);
             equationDisplay = document.getElementById("equationDisplay");
             printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
             preEquals();            
            
-        } */
+        } 
           
     }
 
@@ -108,15 +106,7 @@ function operator(sign) {
             printEquation = document.createTextNode(" + ");
             equationDisplay.appendChild(printEquation);
             currentOperator = " + ";
-            
-            if ( operatorHolderArray.length >= 2) {
-                console.log(joinedNumber);
-                equationDisplay = document.getElementById("equationDisplay");
-                printEquation = document.createTextNode(joinedNumber);
-                equationDisplay.appendChild(printEquation);
-                preEquals();            
-               
-            }
+    
     }
 
     else if (sign == 'subtract') {
@@ -161,7 +151,7 @@ function operator(sign) {
         operatorHolderArray = [];
         document.getElementById("equationDisplay").innerHTML = ""; 
         document.getElementById('numberDisplay').innerHTML="0";
-        document.getElementById('errorDisplay').innerHTML='';
+        document.getElementById('errorDisplay').innerHTML="";
         equationArray.pop();
 
     }
@@ -172,29 +162,35 @@ function operator(sign) {
 ;     
 
 //fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
+//gets result for left hand side of equation no matter the # or operations.
 
 function preEquals() {
-    operandOne = equationArray.shift(); /*equationArray[0];*/
+    //get original operandOne.
+    operandOne = equationArray[0];
+    console.log(operandOne+"thisisoperandOne");
     operatorOne = operatorHolderArray[0]; 
-    operandTwo = equationArray.shift(); /*equationArray[1]; */
-    numArray.pop(); 
+    operandTwo = equationArray[1];
+    console.log(operandTwo+"thisisoperandtwo");
+    //operatorHolderArray.pop() // come back to this./
     // calculates result of first two operands in equationArray.
     result = operators[operatorOne](operandOne,operandTwo);
-    operandOne = result; // place result of right-hand side of equation in operandOne.
-    operandTwo = "";
-    //equationArray.push(operandOne);
-    //equationArray.push(joinedNumber);
-    
+    operandOne = "";
+    operandOne = result;  // place result of right-hand side of equation in operandOne.
+    console.log("numbers in equationArray"+equationArray);
+    equationArray.shift();    
+    equationArray.push(operandOne);
+    equationArray.shift();
 };
 
 function equals() {
+    console.log("this is operandOne"+operandOne);
     //pushes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     //operand combines first two parts of 
     operandOne = equationArray[equationArray.length -2];
     operatorOne = operatorHolderArray[0];
-    operandTwo = equationArray[equationArray.length -1];
+    operandTwo = equationArray[1];
     result = operators[operatorOne](operandOne,operandTwo)
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
