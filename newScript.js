@@ -56,9 +56,9 @@ function getNumber(num) {
         }
 
         else if ( operatorHolderArray.length == 1 ) {
-            document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
+            //document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
             let equationDisplay = document.getElementById("equationDisplay");
-            
+    
             let printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
         }
@@ -69,7 +69,7 @@ function getNumber(num) {
             equationDisplay.appendChild(printEquation);
             preEquals();            
            
-        } 
+        }
           
     }
 
@@ -165,11 +165,12 @@ function operator(sign) {
 //gets result for left hand side of equation no matter the # or operations.
 
 function preEquals() {
+    
     //get original operandOne.
-    operandOne = equationArray[0];
+    operandOne = equationArray.shift();
     console.log(operandOne+"thisisoperandOne");
     operatorOne = operatorHolderArray[0]; 
-    operandTwo = equationArray[1];
+    operandTwo = equationArray.shift();
     console.log(operandTwo+"thisisoperandtwo");
     //operatorHolderArray.pop() // come back to this./
     // calculates result of first two operands in equationArray.
@@ -177,20 +178,19 @@ function preEquals() {
     operandOne = "";
     operandOne = result;  // place result of right-hand side of equation in operandOne.
     console.log("numbers in equationArray"+equationArray);
-    equationArray.shift();    
     equationArray.push(operandOne);
-    equationArray.shift();
+    operandTwo = "";
+    
 };
 
 function equals() {
-    console.log("this is operandOne"+operandOne);
     //pushes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     //operand combines first two parts of 
-    operandOne = equationArray[equationArray.length -2];
+    operandOne = equationArray[0];
     operatorOne = operatorHolderArray[0];
-    operandTwo = equationArray[1];
+    operandTwo = joinedNumber;
     result = operators[operatorOne](operandOne,operandTwo)
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);

@@ -64,9 +64,12 @@ not even sure what the problem is. keep working on equals() and preequals.
 
 2020-12-31
 
-preEquals is not replacing operandOne with calculated value properly.
+preEquals is  replacing operandOne with calculated value properly.
 
 it needs to grab first two values from equationArray, and store in operandOne and operandTwo. Then, have the selected operator act on
 these two and place the result to replace the value in operandOne.
 
 problem seems to arise when > 1 digit number is added in third place of equation.   
+
+equals and preequals is messed up. 
+
