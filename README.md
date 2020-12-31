@@ -59,3 +59,6 @@ display is sort of working, but it adds an extra number to the 3rd operand. I ne
 2020-12-30
 
 set up dev branch to refactor js. 
+
+not even sure what the problem is. keep working on equals() and preequals. 
+
