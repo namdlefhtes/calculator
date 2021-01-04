@@ -48,7 +48,7 @@ function getNumber(num) {
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
         //initiate equals when equation becomes multi-part and next number is added.
-        if ( operatorHolderArray.length < 1 ) {
+         if ( operatorHolderArray.length < 1) {
             document.getElementById('equationDisplay').innerHTML='';
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
@@ -56,11 +56,16 @@ function getNumber(num) {
         }
 
         else if ( operatorHolderArray.length == 1 ) {
-            //document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
-            let equationDisplay = document.getElementById("equationDisplay");
-    
-            let printEquation = document.createTextNode(joinedNumber);
-            equationDisplay.appendChild(printEquation);
+                //document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
+                let equationDisplay = document.getElementById("equationDisplay");
+                let printEquation = document.createTextNode(joinedNumber);
+                equationDisplay.appendChild(printEquation);
+                 if ( joinedNumber >= 10 ) {
+                    document.getElementById('equationDisplay').innerHTML="";
+                    let equationDisplay = document.getElementById("equationDisplay");
+                    printEquation = document.createTextNode(joinedNumber);
+                    equationDisplay.appendChild(printEquation);
+                }
         }
 
         else if ( operatorHolderArray.length >= 2) {
@@ -70,6 +75,7 @@ function getNumber(num) {
             preEquals();            
            
         }
+ 
           
     }
 

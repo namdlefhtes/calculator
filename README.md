@@ -73,3 +73,8 @@ problem seems to arise when > 1 digit number is added in third place of equation
 
 equals and preequals is messed up. 
 
+2021-01-04
+
+took a few days off. 
+
+getNumber() is screwing up the display when numbers greater than 9 are to be displayed. 
