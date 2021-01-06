@@ -48,7 +48,7 @@ function getNumber(num) {
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
         //initiate equals when equation becomes multi-part and next number is added.
-         if ( operatorHolderArray.length < 1) {
+         if ( operatorHolderArray.length < 1 ) {
             document.getElementById('equationDisplay').innerHTML='';
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
@@ -63,7 +63,7 @@ function getNumber(num) {
                  if ( joinedNumber >= 10 ) {
                     document.getElementById('equationDisplay').innerHTML="";
                     let equationDisplay = document.getElementById("equationDisplay");
-                    printEquation = document.createTextNode(joinedNumber);
+                    printEquation = document.createTextNode(equationArray[0] + " " + operatorHolderArray[0] + " " + joinedNumber);
                     equationDisplay.appendChild(printEquation);
                 }
         }
