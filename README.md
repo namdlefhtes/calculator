@@ -82,3 +82,9 @@ getNumber() is screwing up the display when numbers greater than 9 are to be dis
 2021-01-05
 
 preequals seems to work for multi-part addition and subtraction but not mixed. 
+
+2021-01-06
+
+what may work is only positions 0 and 1 or equationArray are ever being operated on, with the result of each equation shifting to the left each time preequals activates.
+
+getting NaN on multi-part now... but onto something. 
