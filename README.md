@@ -78,3 +78,7 @@ equals and preequals is messed up.
 took a few days off. 
 
 getNumber() is screwing up the display when numbers greater than 9 are to be displayed. 
+
+2021-01-05
+
+preequals seems to work for multi-part addition and subtraction but not mixed. 

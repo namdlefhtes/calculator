@@ -13,6 +13,7 @@ let numArray = [];
 let equationArray = [];
 var num = "";
 let result = "";
+let currentOperator = "";
 
 let operators = {
     '+': function(operandOne,operandTwo) {return operandOne + operandTwo },
@@ -118,7 +119,7 @@ function operator(sign) {
     else if (sign == 'subtract') {
         tempNumberPush(numArray);
         selectedOperator = '-';
-        pushToHolder();
+        pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" - ");
         equationDisplay.appendChild(printEquation);
@@ -129,7 +130,7 @@ function operator(sign) {
     else if (sign == 'divide') {
         tempNumberPush(numArray);        
         selectedOperator = '/';    
-        pushToHolder();
+        pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" ÷ ");
         equationDisplay.appendChild(printEquation); 
@@ -140,7 +141,7 @@ function operator(sign) {
     else if (sign == 'multiply') {
         tempNumberPush(numArray);            
         selectedOperator = '*';   
-        pushToHolder();
+        pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" x ");
         equationDisplay.appendChild(printEquation);  
@@ -174,10 +175,8 @@ function preEquals() {
     
     //get original operandOne.
     operandOne = equationArray.shift();
-    console.log(operandOne+"thisisoperandOne");
     operatorOne = operatorHolderArray[0]; 
     operandTwo = equationArray.shift();
-    console.log(operandTwo+"thisisoperandtwo");
     //operatorHolderArray.pop() // come back to this./
     // calculates result of first two operands in equationArray.
     result = operators[operatorOne](operandOne,operandTwo);
