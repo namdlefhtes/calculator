@@ -85,6 +85,5 @@ preequals seems to work for multi-part addition and subtraction but not mixed.
 
 2021-01-06
 
-what may work is only positions 0 and 1 or equationArray are ever being operated on, with the result of each equation shifting to the left each time preequals activates.
+math seems to be working. now display for the third digit or multi part is acting up again... troubleshoot in function preEquals()
 
-getting NaN on multi-part now... but onto something. 

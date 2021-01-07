@@ -159,7 +159,10 @@ function operator(sign) {
         document.getElementById("equationDisplay").innerHTML = ""; 
         document.getElementById('numberDisplay').innerHTML="0";
         document.getElementById('errorDisplay').innerHTML="";
-        equationArray.pop();
+        equationArray.length = 0;
+        operandOne = "";
+        operandTwo = "";    
+
 
     }
   
@@ -189,25 +192,33 @@ function preEquals() {
 }; */
 
 function preEquals() {
-    operandOne = equationArray.shift();
-    operandTwo = equationArray.shift();
-    operatorPull = operatorHolderArray[0];
-    result = operators[operatorPull](operandOne,operandTwo);
-    operandOne = "";
-    operandOne = result;  // place result of right-hand side of equation in operandOne.
-    equationArray.push(operandOne);
-    console.log("numbers in equationArray"+equationArray);
-    operandTwo = "";
+    //take first number from array.
+    if (joinedNumber <=9 ) {
+        console.log("equationarray: "+equationArray);
+        operandOne = equationArray.shift();
+        operandTwo = equationArray[equationArray.length - 1];
+        operatorPull = operatorHolderArray[0];
+        result = operators[operatorPull](operandOne,operandTwo);
+        //equationArray.push(joinedNumber);
+        operandOne = result; 
+        operandTwo = "";
+        equationArray.length = 0;
+        equationArray.push(operandOne);
+        equationArray.push(operandTwo);
+        console.log("operands: "+operandOne+operandTwo);        
+    }
+
+
 };
 
-
-function equals(operandOne, operatorPull) {
+function equals(operatorPull) {
     //pushes most recent number from numArray.
     equationArray.push(numArray[numArray.length -1]);
     document.getElementById('numberDisplay').innerHTML='';
     //operand combines first two parts of 
     operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
     equationArray.push(joinedNumber);
+    operandOne = equationArray[0];
     operandTwo = equationArray[equationArray.length -1];
     operatorPull = operatorHolderArray[operatorHolderArray.length -1];
     result = operators[operatorPull](operandOne,operandTwo)
