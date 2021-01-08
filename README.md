@@ -87,3 +87,6 @@ preequals seems to work for multi-part addition and subtraction but not mixed.
 
 math seems to be working. now display for the third digit or multi part is acting up again... troubleshoot in function preEquals()
 
+2021-01-08 
+
+troubleshoot printEquation stuff. still displaying third digit on multipart wrong. 

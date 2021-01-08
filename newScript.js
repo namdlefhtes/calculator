@@ -22,18 +22,7 @@ let operators = {
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
 
-// fires after operation clicked.
-function tempNumberPush() {
-    //tempNumber = Number(numArray);
-    equationArray.push(numArray[numArray.length -1]);
-    //holds first number from equation.
-    tempArray = [];
-    //reset number. and display.
-    num = "";
-    //add next part of equation.
-    tempArray.push(num);
 
-};
 
 function pushToHolder() {
  if ( equationArray.length >= 1) {
@@ -106,7 +95,9 @@ function getNumber(num) {
 function operator(sign) {
 
    if (sign == 'add') {
-            tempNumberPush(numArray);
+            equationArray.push(numArray[numArray.length -1]);
+            tempArray = [];
+            num = "";        
             selectedOperator = '+';
             pushToHolder(selectedOperator);
             equationDisplay = document.getElementById("equationDisplay");
@@ -117,7 +108,9 @@ function operator(sign) {
     }
 
     else if (sign == 'subtract') {
-        tempNumberPush(numArray);
+        equationArray.push(numArray[numArray.length -1]);
+        tempArray = [];
+        num = "";        
         selectedOperator = '-';
         pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
@@ -128,7 +121,9 @@ function operator(sign) {
         }
 
     else if (sign == 'divide') {
-        tempNumberPush(numArray);        
+        equationArray.push(numArray[numArray.length -1]);
+        tempArray = [];
+        num = "";          
         selectedOperator = '/';    
         pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
@@ -139,7 +134,9 @@ function operator(sign) {
         }
         
     else if (sign == 'multiply') {
-        tempNumberPush(numArray);            
+        equationArray.push(numArray[numArray.length -1]);
+        tempArray = [];
+        num = "";                   
         selectedOperator = '*';   
         pushToHolder(selectedOperator);
         equationDisplay = document.getElementById("equationDisplay");
@@ -194,15 +191,15 @@ function preEquals() {
 function preEquals() {
     //take first number from array.
     if (joinedNumber <=9 ) {
-        console.log("equationarray: "+equationArray);
+
         operandOne = equationArray.shift();
-        operandTwo = equationArray[equationArray.length - 1];
+        operandTwo = equationArray.pop();
         operatorPull = operatorHolderArray[0];
         result = operators[operatorPull](operandOne,operandTwo);
         //equationArray.push(joinedNumber);
         operandOne = result; 
-        operandTwo = "";
-        equationArray.length = 0;
+        console.log(equationArray+"eqArray post clear");
+        equationArray = [];
         equationArray.push(operandOne);
         equationArray.push(operandTwo);
         console.log("operands: "+operandOne+operandTwo);        
@@ -213,16 +210,16 @@ function preEquals() {
 
 function equals(operatorPull) {
     //pushes most recent number from numArray.
-    equationArray.push(numArray[numArray.length -1]);
+   // equationArray.push(numArray[numArray.length -1]);
+    equationArray.push(joinedNumber);
     document.getElementById('numberDisplay').innerHTML='';
     //operand combines first two parts of 
     operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
-    equationArray.push(joinedNumber);
     operandOne = equationArray[0];
     operandTwo = equationArray[equationArray.length -1];
     operatorPull = operatorHolderArray[operatorHolderArray.length -1];
     result = operators[operatorPull](operandOne,operandTwo)
-    console.log("result: "+result);
+    console.log("result: " + result);
     let displayElement = document.getElementById("numberDisplay");
     let printNumber = document.createTextNode(result);
     displayElement.appendChild(printNumber);
