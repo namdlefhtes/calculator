@@ -37,68 +37,82 @@ function getNumber(num) {
         tempArray.push(num);  
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
+        document.getElementById('equationDisplay').innerHTML='';
+        let equationDisplay = document.getElementById("equationDisplay");
+        printEquation= document.createTextNode(joinedNumber);
+        equationDisplay.appendChild(printEquation);
+            if (equationArray.length == 1 ) { // two operand equations.
+                printEquation = (equationArray[0]+"  "+ currentOperator + " " + joinedNumber);
+                document.getElementById('equationDisplay').innerHTML= printEquation;
+                    
+            }
+            else if (equationArray.length == 2) {
+                document.getElementById('equationDisplay').innerHTML= printEquation + 
+            }
+
+            else if (operatorHolderArray.length == 2) {
+                console.log("this is joined number "+joinedNumber);
+                document.getElementById('equationDisplay').innerHTML= (equationArray[0]+"  "+ operatorHolderArray[0] + " " + equationArray[1] + " " + operatorHolderArray[1] + " " +joinedNumber );
+
+
+            }
+       
+
+     
         //initiate equals when equation becomes multi-part and next number is added.
+
+
+        /*
          if ( operatorHolderArray.length < 1 ) {
-            console.log("thisisfiring");
             document.getElementById('equationDisplay').innerHTML='';
             let equationDisplay = document.getElementById("equationDisplay");
-            let printEquation = document.createTextNode(joinedNumber);
+            printEquation= document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
-        }
-
-        else if ( operatorHolderArray.length == 1 ) {
+            
+            if ( operatorHolderArray.length == 1 ) {
                 //document.getElementById('equationDisplay').innerHTML=(equationArray[0]+"  "+ currentOperator + " ");
                 let equationDisplay = document.getElementById("equationDisplay");
                 let printEquation = document.createTextNode(joinedNumber);
                 equationDisplay.appendChild(printEquation);
-                 if ( joinedNumber >= 10 ) {
-                    document.getElementById('equationDisplay').innerHTML="";
-                    let equationDisplay = document.getElementById("equationDisplay");
-                    printEquation = document.createTextNode(equationArray[0] + " " + operatorHolderArray[0] + " " + joinedNumber);
-                    equationDisplay.appendChild(printEquation);
-                }
-        }
+                    if ( joinedNumber >= 10 ) {
+                        document.getElementById('equationDisplay').innerHTML="";
+                        let equationDisplay = document.getElementById("equationDisplay");
+                        printEquation = document.createTextNode(equationArray[0] + " " + operatorHolderArray[0] + " " + joinedNumber);
+                        equationDisplay.appendChild(printEquation);
 
-        else if ( operatorHolderArray.length >= 2) { // if there is more than one operator.
-            equationDisplay = document.getElementById("equationDisplay");
-            console.log("this is the joined number"+joinedNumber);
-            printEquation = document.createTextNode(joinedNumber);
+                        if ( operatorHolderArray.length >= 2) { // if there is more than one operator.
+                            equationDisplay = document.getElementById("equationDisplay");
+                            printEquation = document.createTextNode(joinedNumber);
+                            //equationDisplay.deleteChi
+                            equationDisplay.appendChild(printEquation);
+                            preEquals(); //           
+                      
+                        }*/
+                    }
+            }
+        
+        /*else */ if (num == ".") {
+            tempArray.push(num);
+            joinedNumber = Number(tempArray.join(""));
+            numArray.push(joinedNumber);
+            let equationDisplay = document.getElementById("equationDisplay");
+            printEquation = document.createTextNode(".");
             equationDisplay.appendChild(printEquation);
-            preEquals(); //            
-            if ( joinedNumber >= 10 ) {
-                document.getElementById('equationDisplay').innerHTML="";
-                let equationDisplay = document.getElementById("equationDisplay");
-                printEquation = document.createTextNode(equationArray[0] + " " + operatorHolderArray[0] + " " + joinedNumber);
-                equationDisplay.appendChild(printEquation);
-           
+
+                if  ( numArray.includes(NaN) == true ) {
+                    numArray.pop();
+                    tempArray.pop();
+                    joinedNumber = Number(tempArray.join(""));
+                    document.getElementById('errorDisplay').innerHTML='';
+                    let errorElement = document.getElementById("errorDisplay");
+                    let printError = document.createTextNode("Error: number can only contain one decimal.");
+                    errorElement.appendChild(printError);
+                    document.getElementById("numberDisplay").innerHTML = joinedNumber;
+                 }  
         }
- 
-          
-    }
-
-    else if (num == ".") {
-        tempArray.push(num);
-        joinedNumber = Number(tempArray.join(""));
-        numArray.push(joinedNumber);
-        let equationDisplay = document.getElementById("equationDisplay");
-        printEquation = document.createTextNode(".");
-        equationDisplay.appendChild(printEquation);
-
-             if  ( numArray.includes(NaN) == true ) {
-                numArray.pop();
-                tempArray.pop();
-                joinedNumber = Number(tempArray.join(""));
-                document.getElementById('errorDisplay').innerHTML='';
-                let errorElement = document.getElementById("errorDisplay");
-                let printError = document.createTextNode("Error: number can only contain one decimal.");
-                errorElement.appendChild(printError);
-                document.getElementById("numberDisplay").innerHTML = joinedNumber;
-            }  
-    
-    }
-
-    }
-
+        //}
+    //}
+//};
 function operator(sign) {
 
    if (sign == 'add') {
@@ -223,4 +237,4 @@ function equals(operatorPull) {
 
          
     };
-}
+

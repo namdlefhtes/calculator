@@ -90,3 +90,11 @@ math seems to be working. now display for the third digit or multi part is actin
 2021-01-08 
 
 troubleshoot printEquation stuff. still displaying third digit on multipart wrong. 
+
+2021-01-11 
+
+set printEquation to gradually contain all parts of the equation. GetNumber parts have to run in order then.
+
+tried nesting but getNumber is really screwed up. Too much of the code relies on it though. 
+
+keep trying to refactor getNumber()
