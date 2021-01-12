@@ -39,6 +39,7 @@ function getNumber(num) {
         numArray.push(joinedNumber);
         //initiate equals when equation becomes multi-part and next number is added.
          if ( operatorHolderArray.length < 1 ) {
+            console.log("thisisfiring");
             document.getElementById('equationDisplay').innerHTML='';
             let equationDisplay = document.getElementById("equationDisplay");
             let printEquation = document.createTextNode(joinedNumber);
@@ -60,9 +61,15 @@ function getNumber(num) {
 
         else if ( operatorHolderArray.length >= 2) { // if there is more than one operator.
             equationDisplay = document.getElementById("equationDisplay");
+            console.log("this is the joined number"+joinedNumber);
             printEquation = document.createTextNode(joinedNumber);
             equationDisplay.appendChild(printEquation);
-            preEquals();            
+            preEquals(); //            
+            if ( joinedNumber >= 10 ) {
+                document.getElementById('equationDisplay').innerHTML="";
+                let equationDisplay = document.getElementById("equationDisplay");
+                printEquation = document.createTextNode(equationArray[0] + " " + operatorHolderArray[0] + " " + joinedNumber);
+                equationDisplay.appendChild(printEquation);
            
         }
  
@@ -168,26 +175,6 @@ function operator(sign) {
     }
 ;     
 
-//fires on click or if operatorHolderArray.length >= 2 after next number is entered (getNumber())
-//gets result for left hand side of equation no matter the # or operations.
-
-/*
-function preEquals() {
-    
-    // calculates result of first 2 parts of equation and places in equationArray.
-    operandOne = equationArray.shift();
-    operatorPull = operatorHolderArray[0]; 
-    operandTwo = equationArray.shift();
-    // calculates result of first two operands in equationArray.
-    result = operators[operatorPull](operandOne,operandTwo);
-    operandOne = "";
-    operandOne = result;  // place result of right-hand side of equation in operandOne.
-    equationArray.push(operandOne);
-    console.log("numbers in equationArray"+equationArray);
-    operandTwo = "";
-    
-}; */
-
 function preEquals() {
     //take first number from array.
     if (joinedNumber <=9 ) {
@@ -236,4 +223,4 @@ function equals(operatorPull) {
 
          
     };
-
+}
