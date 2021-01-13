@@ -98,3 +98,7 @@ set printEquation to gradually contain all parts of the equation. GetNumber part
 tried nesting but getNumber is really screwed up. Too much of the code relies on it though. 
 
 keep trying to refactor getNumber()
+
+2021-01-12
+
+math working for most part. weird divide bug after clearing once. throws divide by zero error for other division types. 
