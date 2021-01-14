@@ -54,9 +54,8 @@ function getNumber(num, currentOperator) {
                 console.log("this is afterpreEquals");
             }
                     }
-            }
-        
-        /*else */ if (num == ".") {
+            
+        else if (num == ".") {
             tempArray.push(num);
             joinedNumber = Number(tempArray.join(""));
             numArray.push(joinedNumber);
@@ -75,6 +74,7 @@ function getNumber(num, currentOperator) {
                     document.getElementById("numberDisplay").innerHTML = joinedNumber;
                  }  
         }
+    }
         //}
     //}
 //};
