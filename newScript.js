@@ -31,7 +31,6 @@ function pushToHolder() {
     }
 };
 
-
 function getNumber(num, currentOperator) {
     if (typeof(num) === "number") {
         //joinedNumber is the main number.
@@ -173,8 +172,7 @@ function preEquals() {
 
 function equals(operatorPull) {
     //for 2 part equations.
-    if ((typeof operandOne== 'undefined')) {
-        console.log("isthishappening?");
+    if ((typeof operandOne== 'undefined') ||operandOne == "") {
         equationArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
         operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
