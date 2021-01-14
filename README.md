@@ -102,3 +102,7 @@ keep trying to refactor getNumber()
 2021-01-12
 
 math working for most part. weird divide bug after clearing once. throws divide by zero error for other division types. 
+
+2021-01-13
+
+working on a loop to maintain printing of 'x' and '÷' in two part and multipart equations. Multipart is complicated as may need to loop through without that section to get operators in order. 

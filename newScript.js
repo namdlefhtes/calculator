@@ -25,6 +25,8 @@ let operators = {
 
 
 
+
+
 function pushToHolder() {
  if ( equationArray.length >= 1) {
     operatorHolderArray.push(selectedOperator);
@@ -32,6 +34,23 @@ function pushToHolder() {
 };
 
 function getNumber(num, currentOperator) {
+
+    function replaceOperator() {
+        for (i = 0; i < operatorHolderArray.length; i++ ) {
+            if (operatorHolderArray[i] == '/') {
+                currentOperator = '÷';
+                }
+            else if (operatorHolderArray[i] == '*') {
+                 currentOperator = 'x';
+                    } 
+            else if (operatorHolderArray[i] == "+" || operatorHolderArray[i] == "-" ) {
+                console.log("test: "+operatorHolderArray[i]);
+                 currentOperator = operatorHolderArray[i];
+            }
+                }
+        }
+
+
     if (typeof(num) === "number") {
         //joinedNumber is the main number.
         tempArray.push(num);  
@@ -42,12 +61,14 @@ function getNumber(num, currentOperator) {
         printEquation= document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
             if (operatorHolderArray.length == 1 ) { // two operand equations.
-                printEquation = (equationArray[0] + space + operatorHolderArray[0] +space + joinedNumber);
+                replaceOperator();
+                printEquation = (equationArray[0] + space + currentOperator + space + joinedNumber);
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
             }
 
             else if ( operatorHolderArray.length ==2 ){
                 //a loop may be able to handle this part below.
+                // replaceOperator(); 
                 printEquation = equationArray[0]+ space + operatorHolderArray[0] + space + equationArray[1] + space + operatorHolderArray[1]+" "+joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
                 preEquals();
