@@ -38,13 +38,13 @@ function getNumber(num, currentOperator) {
     function replaceOperator() {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
+                console.log(operatorHolderArray[i]);
                 currentOperator = '÷';
                 }
             else if (operatorHolderArray[i] == '*') {
                  currentOperator = 'x';
                     } 
             else if (operatorHolderArray[i] == "+" || operatorHolderArray[i] == "-" ) {
-                console.log("test: "+operatorHolderArray[i]);
                  currentOperator = operatorHolderArray[i];
             }
                 }
@@ -68,11 +68,12 @@ function getNumber(num, currentOperator) {
 
             else if ( operatorHolderArray.length ==2 ){
                 //a loop may be able to handle this part below.
-                // replaceOperator(); 
-                printEquation = equationArray[0]+ space + operatorHolderArray[0] + space + equationArray[1] + space + operatorHolderArray[1]+" "+joinedNumber;
+                console.log("firing replaceOperator now");
+                replaceOperator(); 
+                console.log(currentOperator+"testingthis");
+                printEquation = equationArray[0]+ space + operatorHolderArray[0] + space + equationArray[1] + space + currentOperator+ space +joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
                 preEquals();
-                console.log("this is afterpreEquals");
             }
                     }
             
@@ -182,7 +183,6 @@ function preEquals() {
         result = operators[operatorPull](operandOne,operandTwo);
         //equationArray.push(joinedNumber);
         operandOne = result; 
-        console.log("show result: "+result);
        // equationArray = [];
        // equationArray.push(operandOne);
         //equationArray.push(operandTwo);
