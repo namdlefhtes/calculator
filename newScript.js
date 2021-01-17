@@ -23,6 +23,21 @@ let operators = {
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
 
+document.addEventListener("keydown", function(event)   {
+    let pressedKey = event.key;
+     
+    
+      if ( pressedKey == "+" ) {
+          console.log(pressedKey);
+          operator('add');
+      }
+      else {
+        num = Number(pressedKey);
+        getNumber(num); 
+      }
+        
+    });
+
 
 
 

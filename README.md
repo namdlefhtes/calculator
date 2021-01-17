@@ -106,3 +106,12 @@ math working for most part. weird divide bug after clearing once. throws divide 
 2021-01-13
 
 working on a loop to maintain printing of 'x' and '÷' in two part and multipart equations. Multipart is complicated as may need to loop through without that section to get operators in order. 
+
+2021-01-15
+
+- get number keys to activate buttons. look into keydown events.
+
+2021-01-17
+
+- have working eventlistener for numbers on keyboard at line 26 and passed through the '+' sign, 
+but this breaks the displayed number. 
