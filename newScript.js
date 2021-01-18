@@ -25,15 +25,48 @@ let operators = {
 
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
-     
     
-      if ( pressedKey == "+" ) {
-          console.log(pressedKey);
-          operator('add');
-      }
-      else {
+     if ( pressedKey >= 0 || pressedKey <= 9 ) {
         num = Number(pressedKey);
         getNumber(num); 
+
+     }
+ 
+      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" ) {
+          console.log(pressedKey+"test");
+
+          switch(pressedKey) {
+            case '+': 
+                sign = 'add';
+                operator(sign);
+                break;
+
+            case '-':
+                sign = 'subtract';
+                operator(sign);
+                break;
+
+            case '/':
+                sign = 'divide';
+                operator(sign);
+                break;
+
+            case 'x':  
+                sign = 'multiply';
+                operator(sign);
+                break;
+          }
+      }  
+        else if ( pressedKey == '=' ) {
+            equals(pressedKey);
+
+        }
+      
+
+      else {
+        console.log("donothing");operator
+
+
       }
         
     });

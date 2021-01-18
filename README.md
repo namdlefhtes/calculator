@@ -115,3 +115,7 @@ working on a loop to maintain printing of 'x' and '÷' in two part and multipart
 
 - have working eventlistener for numbers on keyboard at line 26 and passed through the '+' sign, 
 but this breaks the displayed number. 
+
+2021-01-18
+
+working typed numbers and operators, and equals. 
