@@ -118,4 +118,4 @@ but this breaks the displayed number.
 
 2021-01-18
 
-working typed numbers and operators, and equals. 
+working typed numbers and operators, and equals, and clear. Work on css and layout next time! 

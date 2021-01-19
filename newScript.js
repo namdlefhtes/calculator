@@ -32,8 +32,7 @@ document.addEventListener("keydown", function(event)   {
 
      }
  
-      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" ) {
-          console.log(pressedKey+"test");
+      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape") {
 
           switch(pressedKey) {
             case '+': 
@@ -55,6 +54,11 @@ document.addEventListener("keydown", function(event)   {
                 sign = 'multiply';
                 operator(sign);
                 break;
+
+            case 'Escape':
+                sign = 'clear';
+                operator(sign);
+                break;    
           }
       }  
         else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
