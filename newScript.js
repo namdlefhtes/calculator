@@ -57,14 +57,12 @@ document.addEventListener("keydown", function(event)   {
                 break;
           }
       }  
-        else if ( pressedKey == '=' ) {
-            equals(pressedKey);
-
+        else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
+            equals('=');
         }
       
 
       else {
-        console.log("donothing");operator
 
 
       }
