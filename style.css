@@ -1,5 +1,4 @@
 h1 {
-
     text-align: center;
 }
 
@@ -8,8 +7,8 @@ h1 {
     display: flex;
     justify-content: center;
     display: block;
-    height: 400px;
-    width: 400px;
+    height: auto;
+    width: auto;
     background-color: whitesmoke;
 
 }
@@ -19,22 +18,18 @@ h1 {
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto ;
     grid-row-start: 2;
-    height: 600px;
-    width: 600px;
+    height: auto;
+    width: auto;
     background-color: grey;
 }
 
-#numberkey {
+#numberkey button {
     
     height: auto;
     width: 1fr;
-}
-
-button {
-    
-    height: 100px; 
-    width: 100px;  
-
+    height: 50px; 
+    width: 50px;  
+    padding: 5%;
 }
 
 #equals {
@@ -44,13 +39,22 @@ background-color:lightblue;
 
 #display {
 align-items: right;
+align-content: right;
 }
 
-#operators {
-
+#operators button {
+    height: 50px;
+    width: 50px;
     display: block;
-    width: 50%;
+    padding: 5%;
 
+}
+
+#clear  {
+    height: 50px;
+    width: 50px;
+    display: block;
+    padding: 5%;
 }
 
 #errorDisplay {
