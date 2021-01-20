@@ -239,6 +239,7 @@ function preEquals() {
 function equals(operatorPull) {
     equationString = document.getElementById('equationDisplay').textContent;
     //for 2 part equations.
+
     if ((typeof operandOne== 'undefined') ||operandOne == "") {
         equationArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
@@ -253,14 +254,19 @@ function equals(operatorPull) {
         equationDisplay = document.getElementById("equationDisplay")
         printEquation = document.createTextNode(" = ");
         equationDisplay.appendChild(printEquation);  
+        console.log("is this part firing?");
+
+        // divide by zero error.
+        if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+            console.log(result+"test");
+            document.getElementById('errorDisplay').innerHTML='';
+            document.getElementById('numberDisplay').innerHTML='';
+            let errorElement = document.getElementById("errorDisplay");
+            let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+            errorElement.appendChild(printError);
+            };
 
     }
-    else if (operandTwo === 0 && selectedOperator == '/') {
-        document.getElementById('errorDisplay').innerHTML='';
-        let errorElement = document.getElementById("errorDisplay");
-        let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
-        errorElement.appendChild(printError);
-        }
 
     else if (equationString.includes('=')  ) {
         //seems to stop extra equals signs.
@@ -279,6 +285,15 @@ function equals(operatorPull) {
         equationDisplay = document.getElementById("equationDisplay")
         printEquation = document.createTextNode(" = ");
         equationDisplay.appendChild(printEquation);  
+               // divide by zero error.
+               if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+                console.log(result+"test");
+                document.getElementById('errorDisplay').innerHTML='';
+                document.getElementById('numberDisplay').innerHTML='';
+                let errorElement = document.getElementById("errorDisplay");
+                let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+                errorElement.appendChild(printError);
+                };
         } 
     };
 
