@@ -65,7 +65,6 @@ document.addEventListener("keydown", function(event)   {
             equals('=');
         }
       
-
       else {
 
 
@@ -280,8 +279,6 @@ function equals(operatorPull) {
         equationDisplay = document.getElementById("equationDisplay")
         printEquation = document.createTextNode(" = ");
         equationDisplay.appendChild(printEquation);  
-        }
-
-         
+        } 
     };
 

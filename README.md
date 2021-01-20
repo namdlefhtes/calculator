@@ -118,4 +118,7 @@ but this breaks the displayed number.
 
 2021-01-18
 
-working typed numbers and operators, and equals, and clear. Work on css and layout next time! 
+working typed numbers and operators, and equals, and clear. Work on css and layout next time!
+
+2021-01-19
+working on css. cannot centre this thing. 
