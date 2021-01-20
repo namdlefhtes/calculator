@@ -122,3 +122,6 @@ working typed numbers and operators, and equals, and clear. Work on css and layo
 
 2021-01-19
 working on css. cannot centre this thing. 
+
+2021-01-20 
+trying to get decimal keypress to work. also need to work on css again. 

@@ -26,13 +26,18 @@ let operators = {
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
     
-     if ( pressedKey >= 0 || pressedKey <= 9 ) {
+     if ( pressedKey >= 0 || pressedKey <= 9  ) {
         num = Number(pressedKey);
-        getNumber(num); 
-
+        getNumber(num);
      }
- 
-      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape") {
+
+     else if ( pressedKey == "Period") {
+         console.log("period firing?");
+        num = Number(pressedKey);
+        getNumber(num);
+     }
+
+      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
 
           switch(pressedKey) {
             case '+': 
@@ -55,6 +60,10 @@ document.addEventListener("keydown", function(event)   {
                 operator(sign);
                 break;
 
+            case 'Period':
+               
+                break;
+                
             case 'Escape':
                 sign = 'clear';
                 operator(sign);
@@ -226,11 +235,8 @@ function preEquals() {
         operandTwo = equationArray[1];
         operatorPull = operatorHolderArray[0];
         result = operators[operatorPull](operandOne,operandTwo);
-        //equationArray.push(joinedNumber);
         operandOne = result; 
-       // equationArray = [];
-       // equationArray.push(operandOne);
-        //equationArray.push(operandTwo);
+      
     }
 
 
