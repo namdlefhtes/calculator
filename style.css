@@ -2,14 +2,20 @@ h1 {
     text-align: center;
 }
 
+body {
+    margin: auto;
+    max-width: fit-content;
+
+}
+
 .calc-container {
     display: flex;
     justify-content: center;
-    display: block;
     height: auto;
     width: 300px;
     background-color: whitesmoke;
     vertical-align: middle;
+    outline: auto;
 
 }
 
@@ -43,6 +49,16 @@ h1 {
     width: 400px;;
     display: flex;
     
+}
+
+#numberDisplay  {
+    width: 400px;
+    align-items: center;
+
+}
+
+#equationDisplay {
+    width: 400px;
 }
 
 #operators button {
