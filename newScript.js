@@ -25,19 +25,18 @@ let operators = {
 
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
-    
-     if ( pressedKey >= 0 || pressedKey <= 9  ) {
+     
+    if ( pressedKey >= 0 || pressedKey <= 9  ) {
         num = Number(pressedKey);
         getNumber(num);
      }
 
-     else if ( pressedKey == "Period") {
-         console.log("period firing?");
-        num = Number(pressedKey);
-        getNumber(num);
-     }
+     else if ( pressedKey == '.' ) {
+       num = '.';
+       getNumber(num);
+    }
 
-      else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
+    else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
 
           switch(pressedKey) {
             case '+': 
@@ -59,10 +58,6 @@ document.addEventListener("keydown", function(event)   {
                 sign = 'multiply';
                 operator(sign);
                 break;
-
-            case 'Period':
-               
-                break;
                 
             case 'Escape':
                 sign = 'clear';
@@ -70,7 +65,8 @@ document.addEventListener("keydown", function(event)   {
                 break;    
           }
       }  
-        else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
+        
+      else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
             equals('=');
         }
       
@@ -260,7 +256,6 @@ function equals(operatorPull) {
         equationDisplay = document.getElementById("equationDisplay")
         printEquation = document.createTextNode(" = ");
         equationDisplay.appendChild(printEquation);  
-        console.log("is this part firing?");
 
         // divide by zero error.
         if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
