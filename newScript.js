@@ -25,7 +25,7 @@ let operators = {
 
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
-     
+
     if ( pressedKey >= 0 || pressedKey <= 9  ) {
         num = Number(pressedKey);
         getNumber(num);
@@ -70,6 +70,11 @@ document.addEventListener("keydown", function(event)   {
             equals('=');
         }
       
+      else if ( pressedKey == " " ) {
+        console.log("nope");
+
+      }
+
       else {
 
 

@@ -1,0 +1,33 @@
+.calculator-container {
+
+    display: block;
+    max-width: fit-content;
+    border: 2px;
+    margin: auto;
+    padding: 30px;
+    background-color: darkgray;
+    border-radius: 5%;
+}
+
+#numberDisplay {
+    background-color: grey;
+
+}
+
+#inner-calc  {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: lightgrey;
+}
+
+h1 {
+    text-align: center;
+
+}
+
+#numberkey {
+    background-color: grey;
+    max-width: fit-content;
+
+}
