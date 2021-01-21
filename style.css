@@ -5,8 +5,10 @@ h1 {
 body {
     margin: auto;
     max-width: fit-content;
+    max-height: fit-content;
 
 }
+
 
 .calc-container {
     display: flex;
@@ -30,14 +32,7 @@ body {
     background-color: grey;
 }
 
-#numberkey button {
-    
-    height: auto;
-    width: 1fr;
-    height: 50px; 
-    width: 50px;  
-    padding: 5%;
-}
+
 
 #equals { 
 
@@ -65,14 +60,19 @@ body {
     height: 50px;
     width: 50px;
     display: block;
-    padding: 5%;
+    margin-left: auto;
+}
+
+#numberkey button {
+    width: 400px;
+    height: 50px; 
+    width: 50px;  
 }
 
 #clear  {
     height: 50px;
     width: 50px;
     display: block;
-    padding: 5%;
 }
 
 #errorDisplay {

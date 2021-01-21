@@ -124,4 +124,4 @@ working typed numbers and operators, and equals, and clear. Work on css and layo
 working on css. cannot centre this thing. 
 
 2021-01-20 
-trying to get decimal keypress to work. also need to work on css again. 
+fixed decimal keypress. Need to figure out spacing for buttons in css. probably a full overhaul. 
