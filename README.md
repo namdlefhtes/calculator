@@ -127,4 +127,7 @@ working on css. cannot centre this thing.
 fixed decimal keypress. Need to figure out spacing for buttons in css. probably a full overhaul. 
 
 2021-01-21 
-spacebar creates issue. I think this is because of my space variable. rehashing css from groupd up.
+spacebar creates issue. I think this is because of my space variable. rehashing css from ground up.
+
+2021-01-22
+working on css layout. need to fix spacebar issue still. 

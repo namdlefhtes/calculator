@@ -2,6 +2,7 @@
 
     display: block;
     max-width: fit-content;
+    
     border: 2px;
     margin: auto;
     padding: 30px;
@@ -10,24 +11,47 @@
 }
 
 #numberDisplay {
-    background-color: grey;
-
 }
-
+/*
 #inner-calc  {
     display: flex;
+    max-width: fit-content;
     flex-direction: column;
     color: black;
     background-color: lightgrey;
-}
+} */
 
 h1 {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
-#numberkey {
-    background-color: grey;
-    max-width: fit-content;
+#clear {
+    position: relative;
+    right: -90px;
+}
 
+button {
+display: inline-block;    
+border-radius: 15%;
+font-size: 3ch;
+width: 2em;
+margin: .25em;
+
+}
+
+.display-container {
+
+
+max-width: fit-content;
+font-family: 'Droid Serif';
+font-size: 3vw;
+}
+
+#errorDisplay {
+    color: red;
+   font-size: 2vw;
+   font-weight: bold ;
+   max-width: 50%;
 }
