@@ -6,11 +6,16 @@
     border: 2px;
     margin: auto;
     padding: 30px;
-    background-color: darkgray;
+    background-color: darkcyan;
     border-radius: 5%;
 }
 
 #numberDisplay {
+    color: black;
+}
+
+#equationDisplay {
+    color: lightgrey;
 }
 /*
 #inner-calc  {

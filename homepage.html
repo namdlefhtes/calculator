@@ -10,8 +10,8 @@
 
         <div class ="calculator-container">
             <div class="display-container">
-        <p id = "errorDisplay"></p>
-        <p id = "equationDisplay"></p>
+        <p id = "errorDisplay"> </p>
+        <p id = "equationDisplay">0</p>
         <p id = "numberDisplay">0</p>
             </div>    
         <div class="calc-container"> 
@@ -43,8 +43,9 @@
                  <div class="first-Row">           
                     <button onclick="getNumber(0)" id="0">0</button> 
                     <button onclick="getNumber('.')" id=".">.</button>
-                    <button id="multiply" onclick="operator('multiply')">x</button>
                     <button id="equals" onclick="equals()">=</button>
+                    <button id="multiply" onclick="operator('multiply')">x</button>
+                    
                 </div>
             </div>
      <!-- 

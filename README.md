@@ -131,3 +131,9 @@ spacebar creates issue. I think this is because of my space variable. rehashing 
 
 2021-01-22
 working on css layout. need to fix spacebar issue still. 
+
+2021-01-23 
+
+space bar adds zeroes. cannot use negative integers. lay out is ok.
+
+refactor getNumber printEquation is a mess and cannot scale to multipart equations.

@@ -13,7 +13,7 @@ let numArray = [];
 let equationArray = [];
 var num = "";
 let result = "";
-let space = " ";
+let addSpace = " ";
 //let currentOperator = "";
 
 let operators = {
@@ -25,7 +25,6 @@ let operators = {
 
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
-
     if ( pressedKey >= 0 || pressedKey <= 9  ) {
         num = Number(pressedKey);
         getNumber(num);
@@ -70,8 +69,8 @@ document.addEventListener("keydown", function(event)   {
             equals('=');
         }
       
-      else if ( pressedKey == " " ) {
-        console.log("nope");
+      else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
+
 
       }
 
@@ -89,11 +88,9 @@ function pushToHolder() {
 };
 
 function getNumber(num, currentOperator) {
-
     function replaceOperator() {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
-                console.log(operatorHolderArray[i]);
                 currentOperator = '÷';
                 }
             else if (operatorHolderArray[i] == '*') {
@@ -117,18 +114,24 @@ function getNumber(num, currentOperator) {
         equationDisplay.appendChild(printEquation);
             if (operatorHolderArray.length == 1 ) { // two operand equations.
                 replaceOperator();
-                printEquation = (equationArray[0] + space + currentOperator + space + joinedNumber);
+                printEquation = (equationArray[0] + addSpace + currentOperator + addSpace + joinedNumber);
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
             }
 
-            else if ( operatorHolderArray.length ==2 ){
+            else if ( operatorHolderArray.length >= 2 ){
                 //a loop may be able to handle this part below.
-                console.log("firing replaceOperator now");
                 replaceOperator(); 
-                console.log(currentOperator+"testingthis");
-                printEquation = equationArray[0]+ space + operatorHolderArray[0] + space + equationArray[1] + space + currentOperator+ space +joinedNumber;
+                printEquation = equationArray[0]+ addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + addSpace + currentOperator+ addSpace +joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
                 preEquals();
+                    if ( operatorHolderArray.length >= 3 ) { // switch ? 
+                    console.log("the printEquation: "+printEquation);
+                    replaceOperator();
+                    currentOperator = operatorHolderArray[operatorHolderArray.length -1]; 
+                    printEquation += currentOperator+ addSpace + joinedNumber;
+                    document.getElementById('equationDisplay').innerHTML= printEquation;      
+                    preEquals();
+                }
             }
                     }
             
@@ -264,7 +267,6 @@ function equals(operatorPull) {
 
         // divide by zero error.
         if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-            console.log(result+"test");
             document.getElementById('errorDisplay').innerHTML='';
             document.getElementById('numberDisplay').innerHTML='';
             let errorElement = document.getElementById("errorDisplay");
@@ -293,7 +295,6 @@ function equals(operatorPull) {
         equationDisplay.appendChild(printEquation);  
                // divide by zero error.
                if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-                console.log(result+"test");
                 document.getElementById('errorDisplay').innerHTML='';
                 document.getElementById('numberDisplay').innerHTML='';
                 let errorElement = document.getElementById("errorDisplay");
