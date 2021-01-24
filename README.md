@@ -137,3 +137,7 @@ working on css layout. need to fix spacebar issue still.
 space bar adds zeroes. cannot use negative integers. lay out is ok.
 
 refactor getNumber printEquation is a mess and cannot scale to multipart equations.
+
+2021-01-24 
+
+setup function generatePrintEquation() to make make printEquations for varying operatorHolderArray.length. 

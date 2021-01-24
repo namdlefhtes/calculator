@@ -23,6 +23,15 @@ let operators = {
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
 
+function generatePrintEquation() {
+    
+    printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + joinedNumber);
+    console.log(printEquation);
+    document.getElementById('equationDisplay').innerHTML= printEquation;     
+    break;
+
+}
+
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
     if ( pressedKey >= 0 || pressedKey <= 9  ) {
@@ -114,25 +123,48 @@ function getNumber(num, currentOperator) {
         equationDisplay.appendChild(printEquation);
             if (operatorHolderArray.length == 1 ) { // two operand equations.
                 replaceOperator();
-                printEquation = (equationArray[0] + addSpace + currentOperator + addSpace + joinedNumber);
+               // printEquation = (equationArray[0] + addSpace + currentOperator + addSpace + joinedNumber);
+                printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + joinedNumber);
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
             }
 
+            else if (operatorHolderArray.length >=2 ) {
+                switch (operatorHolderArray.length) {
+                    case 2:
+                        replaceOperator();
+                        printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + joinedNumber);
+                        console.log(printEquation);
+                        document.getElementById('equationDisplay').innerHTML= printEquation;     
+                        break;
+
+                    case 3:
+                        replaceOperator();
+                        printEquation = (equationArray[0] + addSpace +operatorHolderArray[0] +addSpace +equationArray[1] + addSpace +operatorHolderArray[1] +addSpace + equationArray[2] );
+                        document.getElementById('equationDisplay').innerHTML= printEquation;     
+                        break;
+                    
+                    
+                }
+            }
+/*
             else if ( operatorHolderArray.length >= 2 ){
-                //a loop may be able to handle this part below.
                 replaceOperator(); 
-                printEquation = equationArray[0]+ addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + addSpace + currentOperator+ addSpace +joinedNumber;
+                //printEquation = equationArray[0]+ addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + addSpace + currentOperator+ addSpace +joinedNumber;
+                printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + equationArray[1]);
+                printEquation += addSpace + operatorHolderArray[1]+ addSpace +joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;      
                 preEquals();
                     if ( operatorHolderArray.length >= 3 ) { // switch ? 
                     console.log("the printEquation: "+printEquation);
                     replaceOperator();
                     currentOperator = operatorHolderArray[operatorHolderArray.length -1]; 
-                    printEquation += currentOperator+ addSpace + joinedNumber;
+                    console.log("the print equation is still: "+printEquation);
+                    printEquation = 
+                    printEquation += currentOperator + addSpace + joinedNumber;
                     document.getElementById('equationDisplay').innerHTML= printEquation;      
                     preEquals();
-                }
-            }
+                } 
+            }*/
                     }
             
         else if (num == ".") {
