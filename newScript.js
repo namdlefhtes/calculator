@@ -23,12 +23,18 @@ let operators = {
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
 
-function generatePrintEquation() {
-    
-    printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + joinedNumber);
+function generatePrintEquation(equationLength) {
+    console.log("equationlength: "equationLength);
+    return equationLength;
+
+        for (i=0; i < equationLength; i++  ) {
+            
+
+    }
+
+    printEquation = (equationArray[equationLength] + addSpace + operatorHolderArray[equationLength] + addSpace + equationArray[1] + joinedNumber);
     console.log(printEquation);
     document.getElementById('equationDisplay').innerHTML= printEquation;     
-    break;
 
 }
 
@@ -129,6 +135,10 @@ function getNumber(num, currentOperator) {
             }
 
             else if (operatorHolderArray.length >=2 ) {
+                equationLength = operatorHolderArray.length
+                generatePrintEquation(equationLength);
+
+                /*
                 switch (operatorHolderArray.length) {
                     case 2:
                         replaceOperator();
@@ -142,9 +152,8 @@ function getNumber(num, currentOperator) {
                         printEquation = (equationArray[0] + addSpace +operatorHolderArray[0] +addSpace +equationArray[1] + addSpace +operatorHolderArray[1] +addSpace + equationArray[2] );
                         document.getElementById('equationDisplay').innerHTML= printEquation;     
                         break;
-                    
-                    
-                }
+                         
+                } */
             }
 /*
             else if ( operatorHolderArray.length >= 2 ){

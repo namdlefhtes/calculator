@@ -141,3 +141,6 @@ refactor getNumber printEquation is a mess and cannot scale to multipart equatio
 2021-01-24 
 
 setup function generatePrintEquation() to make make printEquations for varying operatorHolderArray.length. 
+
+2021-01-25
+possible two loops could do this. one for equationArray and one for operatorHolderArray. 
