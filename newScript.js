@@ -14,6 +14,8 @@ let equationArray = [];
 var num = "";
 let result = "";
 let addSpace = " ";
+let displayValue = " ";
+
 //let currentOperator = "";
 
 let operators = {
@@ -22,21 +24,18 @@ let operators = {
     '*': function(operandOne,operandTwo) {return operandOne * operandTwo },
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
-
+/*
 function generatePrintEquation(equationLength) {
     console.log("equationlength: "equationLength);
     return equationLength;
 
         for (i=0; i < equationLength; i++  ) {
-            
-
-    }
 
     printEquation = (equationArray[equationLength] + addSpace + operatorHolderArray[equationLength] + addSpace + equationArray[1] + joinedNumber);
     console.log(printEquation);
     document.getElementById('equationDisplay').innerHTML= printEquation;     
 
-}
+//} */
 
 document.addEventListener("keydown", function(event)   {
     let pressedKey = event.key;
@@ -117,7 +116,6 @@ function getNumber(num, currentOperator) {
                 }
         }
 
-
     if (typeof(num) === "number") {
         //joinedNumber is the main number.
         tempArray.push(num);  
@@ -125,35 +123,31 @@ function getNumber(num, currentOperator) {
         numArray.push(joinedNumber);
         document.getElementById('equationDisplay').innerHTML='';
         let equationDisplay = document.getElementById("equationDisplay");
-        printEquation= document.createTextNode(joinedNumber);
+        printEquation = document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
             if (operatorHolderArray.length == 1 ) { // two operand equations.
                 replaceOperator();
-               // printEquation = (equationArray[0] + addSpace + currentOperator + addSpace + joinedNumber);
                 printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + joinedNumber);
-                document.getElementById('equationDisplay').innerHTML= printEquation;      
+                document.getElementById('equationDisplay').innerHTML= printEquation;   
+                displayValue = printEquation;  
+                console.log("this is displayValue: "+ displayValue); 
             }
 
-            else if (operatorHolderArray.length >=2 ) {
-                equationLength = operatorHolderArray.length
-                generatePrintEquation(equationLength);
+            else if (operatorHolderArray.length ==2 ) {
+                replaceOperator();
+                preEquals();
+                printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
+                document.getElementById('equationDisplay').innerHTML= printEquation;
+                displayValue = printEquation;   
+            }
 
-                /*
-                switch (operatorHolderArray.length) {
-                    case 2:
-                        replaceOperator();
-                        printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + equationArray[1] + joinedNumber);
-                        console.log(printEquation);
-                        document.getElementById('equationDisplay').innerHTML= printEquation;     
-                        break;
+            else if (operatorHolderArray.length ==3) {
+                replaceOperator();
+                preEquals();
+                printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
+                document.getElementById('equationDisplay').innerHTML= printEquation;
+                displayValue = printEquation;   
 
-                    case 3:
-                        replaceOperator();
-                        printEquation = (equationArray[0] + addSpace +operatorHolderArray[0] +addSpace +equationArray[1] + addSpace +operatorHolderArray[1] +addSpace + equationArray[2] );
-                        document.getElementById('equationDisplay').innerHTML= printEquation;     
-                        break;
-                         
-                } */
             }
 /*
             else if ( operatorHolderArray.length >= 2 ){
@@ -268,9 +262,8 @@ function operator(sign) {
         operandTwo = "";    
 
 
-    }     
-    }
-;     
+     }     
+    };     
 
 function preEquals() {
     //take first number from array.
@@ -280,8 +273,8 @@ function preEquals() {
         operandTwo = equationArray[1];
         operatorPull = operatorHolderArray[0];
         result = operators[operatorPull](operandOne,operandTwo);
+        //var displayValue = equationArray[0] + addSpace + operatorPull +addSpace +  joinedNumber;
         operandOne = result; 
-      
     }
 
 
