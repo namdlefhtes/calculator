@@ -146,3 +146,7 @@ setup function generatePrintEquation() to make make printEquations for varying o
 possible two loops could do this. one for equationArray and one for operatorHolderArray. 
 
 got display working for up to 3 operators at line 136. math is off after equals. Preequals will need an option to handle multi-part too. 
+
+2021-01-26 
+
+preequals needs to be able to process multiparts properly. constant shifting of equation to operandOne and operandTwo. achieve with loop? switch?

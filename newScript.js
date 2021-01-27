@@ -268,13 +268,14 @@ function operator(sign) {
 function preEquals() {
     //take first number from array.
     if (joinedNumber <=9 ) {
-
         operandOne = equationArray[0]
         operandTwo = equationArray[1];
         operatorPull = operatorHolderArray[0];
         result = operators[operatorPull](operandOne,operandTwo);
-        //var displayValue = equationArray[0] + addSpace + operatorPull +addSpace +  joinedNumber;
         operandOne = result; 
+        console.log("this is the result: "+result);
+
+        }
     }
 
 
@@ -337,4 +338,3 @@ function equals(operatorPull) {
                 };
         } 
     };
-
