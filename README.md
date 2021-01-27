@@ -154,3 +154,5 @@ preequals needs to be able to process multiparts properly. constant shifting of 
 2021-01-27 
 
 line 252 of preEquals() works for 4 parts if last number is single digit. 
+
+Maybe I should be storing each section of the equation as an individual object, then loop through at Equals.. Go back and do Foundations part 5 (objects).
