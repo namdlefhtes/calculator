@@ -150,3 +150,7 @@ got display working for up to 3 operators at line 136. math is off after equals.
 2021-01-26 
 
 preequals needs to be able to process multiparts properly. constant shifting of equation to operandOne and operandTwo. achieve with loop? switch?
+
+2021-01-27 
+
+line 252 of preEquals() works for 4 parts if last number is single digit. 
