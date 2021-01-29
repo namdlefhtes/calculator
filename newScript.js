@@ -69,15 +69,11 @@ document.addEventListener("keydown", function(event)   {
       }  
         
       else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
-            equals('=');
+            pressedKey = '=';
+            equals(pressedKey);
         }
       
       else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
-
-      }
-
-      else {
-
 
       }
         
@@ -240,7 +236,7 @@ function operator(sign) {
 //fires if > 2 operands. 
 function preEquals(e,o) {
     //take first number from array.
-    if (joinedNumber <=9 ) {
+    if (joinedNumber <=9) {
         console.log("operators and operands: "+operatorHolderArray +addSpace+ equationArray);
         operandOne = equationArray[e]
         operatorPull = operatorHolderArray[e];
@@ -261,16 +257,14 @@ function preEquals(e,o) {
             
         }
 
-    }
-       
-        
+            
     };
 
 function equals(operatorPull) {
     equationString = document.getElementById('equationDisplay').textContent;
     //for 2 part equations.
 
-    if ((typeof operandOne== 'undefined') ||operandOne == "") { //for two part equations.
+    if ((typeof operandOne== 'undefined') && joinedNumber <= 9.999) { //for two part equations.
         equationArray.push(joinedNumber);
         document.getElementById('numberDisplay').innerHTML='';
         operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
@@ -293,14 +287,13 @@ function equals(operatorPull) {
             let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
             errorElement.appendChild(printError);
             };
-
     }
 
     else if (equationString.includes('=')  ) {
         //seems to stop extra equals signs.
     }    
 
-    else { //operandOne should come from the results of last preEquals. 
+    else if (joinedNumber >= 10) { //operandOne should come from the results of last preEquals.
         equationArray.push(joinedNumber); 
         document.getElementById('numberDisplay').innerHTML='';
         operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
@@ -322,4 +315,8 @@ function equals(operatorPull) {
                 errorElement.appendChild(printError);
                 };
         } 
-    };
+};
+
+
+};
+
