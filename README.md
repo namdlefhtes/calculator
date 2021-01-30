@@ -160,3 +160,7 @@ Maybe I should be storing each section of the equation as an individual object, 
 2021-01-28
 
 somehow broke equals when trying to make it process MULTI DIGITs for last joined number.
+
+2021-01-29 
+
+fixed equals... for single part. now doesn't work for multi-
