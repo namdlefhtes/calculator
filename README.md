@@ -164,3 +164,7 @@ somehow broke equals when trying to make it process MULTI DIGITs for last joined
 2021-01-29 
 
 fixed equals... for single part. now doesn't work for multi-
+
+2021-02-01 
+
+realized number clicking was broken... this is mostly fixed now . Multi part still not good. getNumber() needs to be simplified. too many arrays and vars.

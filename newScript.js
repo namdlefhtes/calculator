@@ -26,64 +26,47 @@ let operators = {
     '/': function(operandOne,operandTwo) {return operandOne / operandTwo },
 };
 
-document.addEventListener("keydown", function(event)    {
-    let pressedKey = event.key;
-    if ( pressedKey >= 0 || pressedKey <= 9  ) {
-        num = Number(pressedKey);
-        getNumber(num);
-     }
-
-     else if ( pressedKey == '.' ) {
-       num = '.';
-       getNumber(num);
-    }
-
-    else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
-
-          switch(pressedKey) {
-            case '+': 
-                sign = 'add';
-                operator(sign);
-                break;
-
-            case '-':
-                sign = 'subtract';
-                operator(sign);
-                break;
-
-            case '/':
-                sign = 'divide';
-                operator(sign);
-                break;
-
-            case 'x':  
-                sign = 'multiply';
-                operator(sign);
-                break;
-                
-            case 'Escape':
-                sign = 'clear';
-                operator(sign);
-                break;    
-          }
-      }
-        
-        else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
-
-            equals('=');
-    }
-      
-        else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
-            
-    };
-
 function pushToHolder() {
- if ( equationArray.length >= 1) {
-    operatorHolderArray.push(selectedOperator);
+    if ( equationArray.length >= 1) {
+       operatorHolderArray.push(selectedOperator);
+       }
+   };
+
+function operator(sign) {
+   
+    console.log("this is the operator: "+ sign);
+    equationArray.push(numArray[numArray.length -1]);
+    tempArray = [];
+    num = "";
+    
+    if ( sign == "+" || sign == "-") {
+        selectedOperator = sign;
+        pushToHolder(selectedOperator);
+        equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(" " + sign + " ");
+        equationDisplay.appendChild(printEquation);
+        //currentOperator = ;
+    }
+
+    else if ( sign == "÷" || sign == "x" ){
+        switch ( sign ) {
+            case "÷":  selectedOperator = "/";
+            break;
+            
+            case "x":  selectedOperator = "*"; 
+            break;
+
+            default: break;
+        }
+        pushToHolder(selectedOperator);
+        equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(" " + sign + " ");
+        equationDisplay.appendChild(printEquation);
     }
 };
 
 function getNumber(num, currentOperator) {
+
     function replaceOperator() {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
@@ -135,33 +118,92 @@ function getNumber(num, currentOperator) {
                 displayValue = printEquation;   
 
             }
-                    }
+                    
             
-        else if (num == ".") {
-            tempArray.push(num);
-            joinedNumber = Number(tempArray.join(""));
-            numArray.push(joinedNumber);
-            let equationDisplay = document.getElementById("equationDisplay");
-            printEquation = document.createTextNode(".");
-            equationDisplay.appendChild(printEquation);
+            else if (num == ".") {
+                tempArray.push(num);
+                joinedNumber = Number(tempArray.join(""));
+                numArray.push(joinedNumber);
+                let equationDisplay = document.getElementById("equationDisplay");
+                printEquation = document.createTextNode(".");
+                equationDisplay.appendChild(printEquation);
 
-                if  ( numArray.includes(NaN) == true ) {
-                    numArray.pop();
-                    tempArray.pop();
-                    joinedNumber = Number(tempArray.join(""));
-                    document.getElementById('errorDisplay').innerHTML='';
-                    let errorElement = document.getElementById("errorDisplay");
-                    let printError = document.createTextNode("Error: number can only contain one decimal.");
-                    errorElement.appendChild(printError);
-                    document.getElementById("numberDisplay").innerHTML = joinedNumber;
-                 }  
-        }
+                    if  ( numArray.includes(NaN) == true ) {
+                        numArray.pop();
+                        tempArray.pop();
+                        joinedNumber = Number(tempArray.join(""));
+                        document.getElementById('errorDisplay').innerHTML='';
+                        let errorElement = document.getElementById("errorDisplay");
+                        let printError = document.createTextNode("Error: number can only contain one decimal.");
+                        errorElement.appendChild(printError);
+                        document.getElementById("numberDisplay").innerHTML = joinedNumber;
+                    }  
+            }
+        }    
+    };
+
+document.addEventListener("keydown", function(event)    {
+    let pressedKey = event.key;
+    if ( pressedKey >= 0 || pressedKey <= 9  ) {
+        num = Number(pressedKey);
+        getNumber(num);
+     }
+
+     else if ( pressedKey == '.' ) {
+       num = '.';
+       getNumber(num);
     }
+
+    else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
+
+          switch(pressedKey) {
+            case '+': 
+                sign = '+';
+                operator(sign);
+                break;
+
+            case '-':
+                sign = '-';
+                operator(sign);
+                break;
+
+            case '/':
+                sign = '÷';
+                operator(sign);
+                break;
+
+            case 'x':  
+                sign = 'x';
+                operator(sign);
+                break;
+                
+            case 'Escape':
+                sign = 'clear';
+                operator(sign);
+                break;    
+          }
+      }
+        
+        else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
+
+            equals('=');
+    }
+      
+        else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
+            
+    };
+
+
+
+
         //}
     //}
 //};
-function operator(sign) {
 
+
+
+
+ /*
    if (sign == 'add') {
             equationArray.push(numArray[numArray.length -1]);
             tempArray = [];
@@ -171,7 +213,7 @@ function operator(sign) {
             equationDisplay = document.getElementById("equationDisplay");
             printEquation = document.createTextNode(" + ");
             equationDisplay.appendChild(printEquation);
-            //currentOperator = " + ";
+            currentOperator = " + ";
     
     }
 
@@ -228,9 +270,8 @@ function operator(sign) {
         operandOne = "";
         operandTwo = "";    
 
-
-     }     
-    };     
+     }     */
+       
 //fires if > 2 operands. 
 function preEquals(e,o) {
     //take first number from array.
