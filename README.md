@@ -168,3 +168,7 @@ fixed equals... for single part. now doesn't work for multi-
 2021-02-01 
 
 realized number clicking was broken... this is mostly fixed now . Multi part still not good. getNumber() needs to be simplified. too many arrays and vars.
+
+2021-02-02
+
+I think to fix equals clicking requires moving it up higher in script so it can fire before the mention in key press. fixing decimal will be similar. equals needs to be refactored as it is extremely verbose. 

@@ -17,6 +17,8 @@ let addSpace = " ";
 let displayValue = " ";
 var e = "";
 
+
+
 //let currentOperator = "";
 
 let operators = {
@@ -52,10 +54,8 @@ function operator(sign) {
         switch ( sign ) {
             case "÷":  selectedOperator = "/";
             break;
-            
             case "x":  selectedOperator = "*"; 
             break;
-
             default: break;
         }
         pushToHolder(selectedOperator);
@@ -63,10 +63,28 @@ function operator(sign) {
         printEquation = document.createTextNode(" " + sign + " ");
         equationDisplay.appendChild(printEquation);
     }
+
+    else if ( sign == "clear" ) {
+
+        numArray = [];       
+        tempArray = [];            
+        num = "";   
+        tempNumber = "";
+        selectedOperator = '';   
+        operatorHolderArray = [];
+        document.getElementById("equationDisplay").innerHTML = ""; 
+        document.getElementById('numberDisplay').innerHTML="0";
+        document.getElementById('errorDisplay').innerHTML="";
+        equationArray.length = 0;
+        operandOne = "";
+        operandTwo = "";    
+    }
 };
 
-function getNumber(num, currentOperator) {
 
+
+function getNumber(num, currentOperator) {
+    
     function replaceOperator() {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
@@ -118,8 +136,7 @@ function getNumber(num, currentOperator) {
                 displayValue = printEquation;   
 
             }
-                    
-            
+                
             else if (num == ".") {
                 tempArray.push(num);
                 joinedNumber = Number(tempArray.join(""));
@@ -182,96 +199,14 @@ document.addEventListener("keydown", function(event)    {
                 operator(sign);
                 break;    
           }
-      }
-        
+      }       
         else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
-
-            equals('=');
-    }
-      
+            equals();
+    } 
         else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
             
     };
 
-
-
-
-        //}
-    //}
-//};
-
-
-
-
- /*
-   if (sign == 'add') {
-            equationArray.push(numArray[numArray.length -1]);
-            tempArray = [];
-            num = "";        
-            selectedOperator = '+';
-            pushToHolder(selectedOperator);
-            equationDisplay = document.getElementById("equationDisplay");
-            printEquation = document.createTextNode(" + ");
-            equationDisplay.appendChild(printEquation);
-            currentOperator = " + ";
-    
-    }
-
-    else if (sign == 'subtract') {
-        equationArray.push(numArray[numArray.length -1]);
-        tempArray = [];
-        num = "";        
-        selectedOperator = '-';
-        pushToHolder(selectedOperator);
-        equationDisplay = document.getElementById("equationDisplay");
-        printEquation = document.createTextNode(" - ");
-        equationDisplay.appendChild(printEquation);
-        //currentOperator == " - ";
-
-        }
-
-    else if (sign == 'divide') {
-        equationArray.push(numArray[numArray.length -1]);
-        tempArray = [];
-        num = "";          
-        selectedOperator = '/';    
-        pushToHolder(selectedOperator);
-        equationDisplay = document.getElementById("equationDisplay");
-        printEquation = document.createTextNode(" ÷ ");
-        equationDisplay.appendChild(printEquation); 
-       // currentOperator = " ÷ ";
-
-        }
-        
-    else if (sign == 'multiply') {
-        equationArray.push(numArray[numArray.length -1]);
-        tempArray = [];
-        num = "";                   
-        selectedOperator = '*';   
-        pushToHolder(selectedOperator);
-        equationDisplay = document.getElementById("equationDisplay");
-        printEquation = document.createTextNode(" x ");
-        equationDisplay.appendChild(printEquation);  
-        //currentOperator = " x ";
-        }
-    
-    else if (sign == 'clear') {
-        console.log("clear");
-        numArray = [];       
-        tempArray = [];            
-        num = "";   
-        tempNumber = "";
-        selectedOperator = '';   
-        operatorHolderArray = [];
-        document.getElementById("equationDisplay").innerHTML = ""; 
-        document.getElementById('numberDisplay').innerHTML="0";
-        document.getElementById('errorDisplay').innerHTML="";
-        equationArray.length = 0;
-        operandOne = "";
-        operandTwo = "";    
-
-     }     */
-       
 //fires if > 2 operands. 
 function preEquals(e,o) {
     //take first number from array.
@@ -280,7 +215,6 @@ function preEquals(e,o) {
         operandOne = equationArray[e]
         operatorPull = operatorHolderArray[e];
         operandTwo = equationArray[o];
-        console.log(operandOne+operatorPull+operandTwo);
         result = operators[operatorPull](operandOne,operandTwo);
         operandOne = result;
 
@@ -294,9 +228,7 @@ function preEquals(e,o) {
             operandOne = operators[operatorPull](operandOne,operandTwo);
             console.log("new operandOne: "+operandOne);
             
-        }
-
-            
+        }           
     };
 };
 
@@ -312,7 +244,7 @@ function equals(operatorPull) {
         operandTwo = joinedNumber;
         operatorPull = operatorHolderArray[0];
         result = operators[operatorPull](operandOne,operandTwo)
-        let displayElement = document.getElementById("numberDisplay");
+        displayElement = document.getElementById("numberDisplay");
         let printNumber = document.createTextNode(result);
         displayElement.appendChild(printNumber);
         equationDisplay = document.getElementById("equationDisplay")
@@ -357,12 +289,5 @@ function equals(operatorPull) {
         } 
 
 }
-
-}); // bracket here wraps line 29.
-
-
-
-
-
-
-//});
+); // bracket here wraps line 29.
+} 
