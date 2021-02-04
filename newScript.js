@@ -159,6 +159,65 @@ function getNumber(num, currentOperator) {
         }    
     };
 
+    function equals(operatorPull) {
+        equationString = document.getElementById('equationDisplay').textContent;
+        //for 2 part equations.
+        
+        if ((typeof operandOne== 'undefined') ||operandOne == "") {
+            equationArray.push(joinedNumber);
+            document.getElementById('numberDisplay').innerHTML='';
+            operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
+            operandOne = equationArray[0];            
+            operandTwo = joinedNumber;
+            //operatorPull = operatorHolderArray[0];
+            result = operators[operatorPull](operandOne,operandTwo)
+            displayElement = document.getElementById("numberDisplay");
+            let printNumber = document.createTextNode(result);
+            displayElement.appendChild(printNumber);
+            equationDisplay = document.getElementById("equationDisplay")
+            printEquation = document.createTextNode(" = ");
+            equationDisplay.appendChild(printEquation);  
+    
+            // divide by zero error.
+            if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+                document.getElementById('errorDisplay').innerHTML='';
+                document.getElementById('numberDisplay').innerHTML='';
+                let errorElement = document.getElementById("errorDisplay");
+                let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+                errorElement.appendChild(printError);
+                };
+        }
+    
+        else if ( equationString.includes('=')  ) {
+            //seems to stop extra equals signs.
+        }    
+    
+        else if ( joinedNumber >= 10 )  { //operandOne should come from the results of last preEquals.
+            equationArray.push(joinedNumber); 
+            document.getElementById('numberDisplay').innerHTML='';
+            operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
+            operandTwo = joinedNumber;
+            //operatorPull = operatorHolderArray[operatorHolderArray.length -1];
+            result = operators[operatorPull](operandOne,operandTwo)
+            let displayElement = document.getElementById("numberDisplay");
+            let printNumber = document.createTextNode(result);
+            displayElement.appendChild(printNumber);
+            equationDisplay = document.getElementById("equationDisplay")
+            printEquation = document.createTextNode(" = ");
+            equationDisplay.appendChild(printEquation);  
+                   // divide by zero error.
+                   if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+                    document.getElementById('errorDisplay').innerHTML='';
+                    document.getElementById('numberDisplay').innerHTML='';
+                    let errorElement = document.getElementById("errorDisplay");
+                    let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+                    errorElement.appendChild(printError);
+                    }; 
+            } 
+    
+        };
+
+
 document.addEventListener("keydown", function(event)    {
     let pressedKey = event.key;
     if ( pressedKey >= 0 || pressedKey <= 9  ) {
@@ -232,62 +291,5 @@ function preEquals(e,o) {
     };
 };
 
-function equals(operatorPull) {
-    equationString = document.getElementById('equationDisplay').textContent;
-    //for 2 part equations.
-
-    if ((typeof operandOne== 'undefined') ||operandOne == "") {
-        equationArray.push(joinedNumber);
-        document.getElementById('numberDisplay').innerHTML='';
-        operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
-        operandOne = equationArray[0];            
-        operandTwo = joinedNumber;
-        operatorPull = operatorHolderArray[0];
-        result = operators[operatorPull](operandOne,operandTwo)
-        displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode(" = ");
-        equationDisplay.appendChild(printEquation);  
-
-        // divide by zero error.
-        if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-            document.getElementById('errorDisplay').innerHTML='';
-            document.getElementById('numberDisplay').innerHTML='';
-            let errorElement = document.getElementById("errorDisplay");
-            let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
-            errorElement.appendChild(printError);
-            };
-    }
-
-    else if ( equationString.includes('=')  ) {
-        //seems to stop extra equals signs.
-    }    
-
-    else if ( joinedNumber >= 10 )  { //operandOne should come from the results of last preEquals.
-        equationArray.push(joinedNumber); 
-        document.getElementById('numberDisplay').innerHTML='';
-        operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
-        operandTwo = joinedNumber;
-        operatorPull = operatorHolderArray[operatorHolderArray.length -1];
-        result = operators[operatorPull](operandOne,operandTwo)
-        let displayElement = document.getElementById("numberDisplay");
-        let printNumber = document.createTextNode(result);
-        displayElement.appendChild(printNumber);
-        equationDisplay = document.getElementById("equationDisplay")
-        printEquation = document.createTextNode(" = ");
-        equationDisplay.appendChild(printEquation);  
-               // divide by zero error.
-               if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-                document.getElementById('errorDisplay').innerHTML='';
-                document.getElementById('numberDisplay').innerHTML='';
-                let errorElement = document.getElementById("errorDisplay");
-                let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
-                errorElement.appendChild(printError);
-                }; 
-        } 
-
-}
-); // bracket here wraps line 29.
-} 
+ // bracket here wraps line 29.
+});
