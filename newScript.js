@@ -17,8 +17,6 @@ let addSpace = " ";
 let displayValue = " ";
 var e = "";
 
-
-
 //let currentOperator = "";
 
 let operators = {
@@ -44,7 +42,7 @@ function operator(sign) {
     if ( sign == "+" || sign == "-") {
         selectedOperator = sign;
         pushToHolder(selectedOperator);
-        equationDisplay = document.getElementById("equationDisplay");
+        //equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" " + sign + " ");
         equationDisplay.appendChild(printEquation);
         //currentOperator = ;
@@ -59,7 +57,7 @@ function operator(sign) {
             default: break;
         }
         pushToHolder(selectedOperator);
-        equationDisplay = document.getElementById("equationDisplay");
+       // equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(" " + sign + " ");
         equationDisplay.appendChild(printEquation);
     }
@@ -84,7 +82,8 @@ function operator(sign) {
 
 
 function getNumber(num, currentOperator) {
-    
+    const equationDisplay = document.getElementById("equationDisplay");
+
     function replaceOperator() {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
@@ -105,7 +104,7 @@ function getNumber(num, currentOperator) {
         joinedNumber = Number(tempArray.join(""));
         numArray.push(joinedNumber);
         document.getElementById('equationDisplay').innerHTML='';
-        let equationDisplay = document.getElementById("equationDisplay");
+        //let equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
             if (operatorHolderArray.length == 1 ) { // two operand equations. Does not use preEquals()
@@ -113,24 +112,23 @@ function getNumber(num, currentOperator) {
                 printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + joinedNumber);
                 document.getElementById('equationDisplay').innerHTML= printEquation;   
                 displayValue = printEquation;  
-                console.log("this is displayValue: "+ displayValue); 
             }
 
             else if (operatorHolderArray.length ==2 ) { // 3 operand equation. 
-                e = 0;
+                z = 0;
                 o= 1;
                 replaceOperator();
-                preEquals(e,o);
+                preEquals(z,o);
                 printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;
                 displayValue = printEquation;   
             }
 
             else if (operatorHolderArray.length == 3) {
-                e = 2;
+                z = 2;
                 o = 3;
                 replaceOperator();
-                preEquals(e,o);
+                preEquals(z,o);
                 printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;
                 displayValue = printEquation;   
@@ -141,7 +139,7 @@ function getNumber(num, currentOperator) {
                 tempArray.push(num);
                 joinedNumber = Number(tempArray.join(""));
                 numArray.push(joinedNumber);
-                let equationDisplay = document.getElementById("equationDisplay");
+               // let equationDisplay = document.getElementById("equationDisplay");
                 printEquation = document.createTextNode(".");
                 equationDisplay.appendChild(printEquation);
 
@@ -159,8 +157,26 @@ function getNumber(num, currentOperator) {
         }    
     };
 
+    //fires if > 2 operands. 
+function preEquals(z,o) {
+    console.log("point that preequals fires");
+    operandOne = equationArray[z]
+    operatorPull = operatorHolderArray[z];
+    operandTwo = equationArray[o];
+    result = operators[operatorPull](operandOne,operandTwo);
+    operandOne = result;
+    if ( joinedNumber >=10 ){
+        operandOne = equationArray[0];
+        operandTwo = equationArray[1];
+        operandOne = operators[operatorPull](operandOne,operandTwo);
+        operandTwo = joinedNumber;
+        //operandOne = operators[operatorPull](operandOne,operandTwo);
+        console.log("new operandOne: "+operandOne);     
+        }           
+    };
+
     function equals(operatorPull) {
-        equationString = document.getElementById('equationDisplay').textContent;
+        equationString = document.getElementById(   'equationDisplay').textContent;
         //for 2 part equations.
         
         if ((typeof operandOne== 'undefined') ||operandOne == "") {
@@ -174,7 +190,7 @@ function getNumber(num, currentOperator) {
             displayElement = document.getElementById("numberDisplay");
             let printNumber = document.createTextNode(result);
             displayElement.appendChild(printNumber);
-            equationDisplay = document.getElementById("equationDisplay")
+            //equationDisplay = document.getElementById("equationDisplay")
             printEquation = document.createTextNode(" = ");
             equationDisplay.appendChild(printEquation);  
     
@@ -192,7 +208,7 @@ function getNumber(num, currentOperator) {
             //seems to stop extra equals signs.
         }    
     
-        else if ( joinedNumber >= 10 )  { //operandOne should come from the results of last preEquals.
+        else if ( operandOne > 0 )  { //operandOne should come from the results of last preEquals.
             equationArray.push(joinedNumber); 
             document.getElementById('numberDisplay').innerHTML='';
             operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
@@ -202,7 +218,7 @@ function getNumber(num, currentOperator) {
             let displayElement = document.getElementById("numberDisplay");
             let printNumber = document.createTextNode(result);
             displayElement.appendChild(printNumber);
-            equationDisplay = document.getElementById("equationDisplay")
+            //equationDisplay = document.getElementById("equationDisplay")
             printEquation = document.createTextNode(" = ");
             equationDisplay.appendChild(printEquation);  
                    // divide by zero error.
@@ -266,30 +282,7 @@ document.addEventListener("keydown", function(event)    {
             
     };
 
-//fires if > 2 operands. 
-function preEquals(e,o) {
-    //take first number from array.
-    if (joinedNumber <=9) {
-        console.log("operators and operands: "+operatorHolderArray +addSpace+ equationArray);
-        operandOne = equationArray[e]
-        operatorPull = operatorHolderArray[e];
-        operandTwo = equationArray[o];
-        result = operators[operatorPull](operandOne,operandTwo);
-        operandOne = result;
 
-        if ( operatorHolderArray.length >= 3 ){
-           
-            operandOne = equationArray[0];
-            console.log(operandOne);
-            operandTwo = equationArray[1];
-            operandOne = operators[operatorPull](operandOne,operandTwo);
-            operandTwo = equationArray[2];
-            operandOne = operators[operatorPull](operandOne,operandTwo);
-            console.log("new operandOne: "+operandOne);
-            
-        }           
-    };
-};
 
  // bracket here wraps line 29.
 });
