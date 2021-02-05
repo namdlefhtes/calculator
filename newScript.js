@@ -34,7 +34,6 @@ function pushToHolder() {
 
 function operator(sign) {
    
-    console.log("this is the operator: "+ sign);
     equationArray.push(numArray[numArray.length -1]);
     tempArray = [];
     num = "";
@@ -88,15 +87,15 @@ function getNumber(num, currentOperator) {
         for (i = 0; i < operatorHolderArray.length; i++ ) {
             if (operatorHolderArray[i] == '/') {
                 currentOperator = '÷';
-                }
+            }
             else if (operatorHolderArray[i] == '*') {
                  currentOperator = 'x';
-                    } 
+            } 
             else if (operatorHolderArray[i] == "+" || operatorHolderArray[i] == "-" ) {
                  currentOperator = operatorHolderArray[i];
             }
-                }
         }
+    };
 
     if (typeof(num) === "number") {
         //joinedNumber is the main number.
@@ -107,12 +106,14 @@ function getNumber(num, currentOperator) {
         //let equationDisplay = document.getElementById("equationDisplay");
         printEquation = document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
+
             if (operatorHolderArray.length == 1 ) { // two operand equations. Does not use preEquals()
                 replaceOperator();
                 printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + joinedNumber);
                 document.getElementById('equationDisplay').innerHTML= printEquation;   
                 displayValue = printEquation;  
-            }
+
+            }    
 
             else if (operatorHolderArray.length ==2 ) { // 3 operand equation. 
                 z = 0;
@@ -122,7 +123,13 @@ function getNumber(num, currentOperator) {
                 printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;
                 displayValue = printEquation;   
-            }
+
+                if ( joinedNumber >= 10 ) {
+                    printEquation = equationArray[0]+addSpace+operatorHolderArray[0]+addSpace+equationArray[1]+addSpace+operatorHolderArray[1]+addSpace+joinedNumber; 
+                    document.getElementById('equationDisplay').innerHTML= printEquation;
+                    displayValue = printEquation;   
+                }
+            } 
 
             else if (operatorHolderArray.length == 3) {
                 z = 2;
@@ -156,7 +163,7 @@ function getNumber(num, currentOperator) {
             }
         }    
     };
-
+   
     //fires if > 2 operands. 
 function preEquals(z,o) {
     console.log("point that preequals fires");
@@ -175,114 +182,113 @@ function preEquals(z,o) {
         }           
     };
 
-    function equals(operatorPull) {
-        equationString = document.getElementById(   'equationDisplay').textContent;
-        //for 2 part equations.
-        
-        if ((typeof operandOne== 'undefined') ||operandOne == "") {
-            equationArray.push(joinedNumber);
-            document.getElementById('numberDisplay').innerHTML='';
-            operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
-            operandOne = equationArray[0];            
-            operandTwo = joinedNumber;
-            //operatorPull = operatorHolderArray[0];
-            result = operators[operatorPull](operandOne,operandTwo)
-            displayElement = document.getElementById("numberDisplay");
-            let printNumber = document.createTextNode(result);
-            displayElement.appendChild(printNumber);
-            //equationDisplay = document.getElementById("equationDisplay")
-            printEquation = document.createTextNode(" = ");
-            equationDisplay.appendChild(printEquation);  
-    
+function equals(operatorPull) {
+    equationString = document.getElementById(   'equationDisplay').textContent;
+    //for 2 part equations.
+    if ((typeof operandOne== 'undefined') ||operandOne == "") {
+        equationArray.push(joinedNumber);
+        document.getElementById('numberDisplay').innerHTML='';
+        operatorPull = operatorHolderArray[operatorHolderArray.length -1];
+        operandOne = equationArray[0];            
+        operandTwo = joinedNumber;
+        //operatorPull = operatorHolderArray[0];
+        result = operators[operatorPull](operandOne,operandTwo)
+        displayElement = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        displayElement.appendChild(printNumber);
+        //equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode(" = ");
+        equationDisplay.appendChild(printEquation);  
             // divide by zero error.
-            if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-                document.getElementById('errorDisplay').innerHTML='';
-                document.getElementById('numberDisplay').innerHTML='';
-                let errorElement = document.getElementById("errorDisplay");
-                let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
-                errorElement.appendChild(printError);
-                };
-        }
-    
-        else if ( equationString.includes('=')  ) {
-            //seems to stop extra equals signs.
-        }    
-    
-        else if ( operandOne > 0 )  { //operandOne should come from the results of last preEquals.
-            equationArray.push(joinedNumber); 
+        if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+            document.getElementById('errorDisplay').innerHTML='';
             document.getElementById('numberDisplay').innerHTML='';
-            operatorPull = operatorHolderArray[operatorHolderArray.length -1 ];
-            operandTwo = joinedNumber;
-            //operatorPull = operatorHolderArray[operatorHolderArray.length -1];
-            result = operators[operatorPull](operandOne,operandTwo)
-            let displayElement = document.getElementById("numberDisplay");
-            let printNumber = document.createTextNode(result);
-            displayElement.appendChild(printNumber);
-            //equationDisplay = document.getElementById("equationDisplay")
-            printEquation = document.createTextNode(" = ");
-            equationDisplay.appendChild(printEquation);  
-                   // divide by zero error.
-                   if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
-                    document.getElementById('errorDisplay').innerHTML='';
-                    document.getElementById('numberDisplay').innerHTML='';
-                    let errorElement = document.getElementById("errorDisplay");
-                    let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
-                    errorElement.appendChild(printError);
-                    }; 
-            } 
-    
+            let errorElement = document.getElementById("errorDisplay");
+            let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+            errorElement.appendChild(printError);
         };
+    }       
+    
+    else if ( equationString.includes('=')  ) {
+    //seems to stop extra equals signs.
+    }    
+    
+    else if ( operandOne > 0 )  { //operandOne should come from the results of last preEquals.
+        equationArray.push(joinedNumber); 
+        document.getElementById('numberDisplay').innerHTML='';
+        operatorPull = operatorHolderArray[operatorHolderArray.length -1];
+        operandTwo = joinedNumber;
+        //operatorPull = operatorHolderArray[operatorHolderArray.length -1];
+        result = operators[operatorPull](operandOne,operandTwo)
+        let displayElement = document.getElementById("numberDisplay");
+        let printNumber = document.createTextNode(result);
+        displayElement.appendChild(printNumber);
+        //equationDisplay = document.getElementById("equationDisplay")
+        printEquation = document.createTextNode(" = ");
+        equationDisplay.appendChild(printEquation);  
+        // divide by zero error.
+        if (operandTwo === 0 && selectedOperator == '/' ||  result === Infinity) {
+            document.getElementById('errorDisplay').innerHTML='';
+            document.getElementById('numberDisplay').innerHTML='';
+            let errorElement = document.getElementById("errorDisplay");
+            let printError = document.createTextNode("Error: Dividing by zero may result in the Universe imploding. Please refrain.");
+            errorElement.appendChild(printError);
+        }; 
+    } 
+    
+};
 
 
-document.addEventListener("keydown", function(event)    {
+document.addEventListener("keydown", function(event) {
     let pressedKey = event.key;
+
     if ( pressedKey >= 0 || pressedKey <= 9  ) {
         num = Number(pressedKey);
         getNumber(num);
-     }
+    }
 
-     else if ( pressedKey == '.' ) {
+    else if ( pressedKey == '.' ) {
        num = '.';
        getNumber(num);
     }
 
     else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
 
-          switch(pressedKey) {
-            case '+': 
-                sign = '+';
-                operator(sign);
-                break;
+        switch(pressedKey) {
+        case '+': 
+            sign = '+';
+            operator(sign);
+            break;
 
-            case '-':
-                sign = '-';
-                operator(sign);
-                break;
+        case '-':
+            sign = '-';
+            operator(sign);
+            break;
 
-            case '/':
-                sign = '÷';
-                operator(sign);
-                break;
+        case '/':
+            sign = '÷';
+            operator(sign);
+            break;
 
-            case 'x':  
-                sign = 'x';
-                operator(sign);
-                break;
-                
-            case 'Escape':
-                sign = 'clear';
-                operator(sign);
-                break;    
-          }
-      }       
-        else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
-            equals();
-    } 
-        else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
+        case 'x':  
+            sign = 'x';
+            operator(sign);
+            break;
             
-    };
+        case 'Escape':
+            sign = 'clear';
+            operator(sign);
+            break;    
+        }
+}       
+    else if ( pressedKey == '=' || pressedKey == 'Enter' ) {
+        equals();
+    } 
+    else if ( pressedKey == " " || pressedKey == "Space" || pressedKey == "32" ) {
+}
 
+});
+     
 
 
  // bracket here wraps line 29.
-});
