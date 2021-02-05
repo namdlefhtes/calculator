@@ -128,7 +128,17 @@ function getNumber(num, currentOperator) {
                     printEquation = equationArray[0]+addSpace+operatorHolderArray[0]+addSpace+equationArray[1]+addSpace+operatorHolderArray[1]+addSpace+joinedNumber; 
                     document.getElementById('equationDisplay').innerHTML= printEquation;
                     displayValue = printEquation;   
-                }
+                    
+                   let run = 0, first =0, second =0;
+                     displayArray = [];
+                    if (first > second) {
+                        displayArray[run] = operatorHolderArray[second];
+                        first++;
+                    }
+
+                    run++;
+                console.log("test"+displayArray);
+                };
             } 
 
             else if (operatorHolderArray.length == 3) {
