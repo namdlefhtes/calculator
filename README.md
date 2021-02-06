@@ -178,8 +178,15 @@ I think to fix equals clicking requires moving it up higher in script so it can 
 moved equals and preequals.
 come back to line 101 to fix displaying for > 10 of 3rd digit number. 
 
-2021-02-03
+2021-02-04
 
 code is gross, but it is working for 2 operator equations with any amount of digits. decimal does not work. Fix the decimal then move on.
 
 I believe this could be achieved through a loop, but I am not sure how to go about doing it. 
+
+I started a loop in the code to alternate between values in equationArray and operatorHolderArray. May need to use .join or .concat
+
+
+2021-02-05 
+
+felt close at 146, but not really. need a way to join alternating values. not as simple as I thought. 

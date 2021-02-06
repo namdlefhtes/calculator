@@ -125,10 +125,11 @@ function getNumber(num, currentOperator) {
                 displayValue = printEquation;   
 
                 if ( joinedNumber >= 10 ) {
+                    console.log("I am in here");
                     printEquation = equationArray[0]+addSpace+operatorHolderArray[0]+addSpace+equationArray[1]+addSpace+operatorHolderArray[1]+addSpace+joinedNumber; 
                     document.getElementById('equationDisplay').innerHTML= printEquation;
                     displayValue = printEquation;   
-                    
+                  /*  
                    let run = 0, first =0, second =0;
                      displayArray = [];
                     if (first > second) {
@@ -137,21 +138,26 @@ function getNumber(num, currentOperator) {
                     }
 
                     run++;
-                console.log("test"+displayArray);
-                };
-            } 
+                        */
+                }      
 
+            }
+            
             else if (operatorHolderArray.length == 3) {
                 z = 2;
                 o = 3;
                 replaceOperator();
                 preEquals(z,o);
-                printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
-                document.getElementById('equationDisplay').innerHTML= printEquation;
-                displayValue = printEquation;   
-
+                    for (i=0; operatorHolderArray.length > i; i++ ) {
+                    joinedArray = [].concat(equationArray,operatorHolderArray);
+                    console.log("joiined array:"+joinedArray);
+                    displayValue = equationArray.join(" "+operatorHolderArray[i]+" ");
+                    printEquation = displayValue+ addSpace+ currentOperator +addSpace+joinedNumber;
+                    document.getElementById('equationDisplay').innerHTML= printEquation;
+                    }    
             }
-                
+
+            
             else if (num == ".") {
                 tempArray.push(num);
                 joinedNumber = Number(tempArray.join(""));
@@ -176,7 +182,6 @@ function getNumber(num, currentOperator) {
    
     //fires if > 2 operands. 
 function preEquals(z,o) {
-    console.log("point that preequals fires");
     operandOne = equationArray[z]
     operatorPull = operatorHolderArray[z];
     operandTwo = equationArray[o];
