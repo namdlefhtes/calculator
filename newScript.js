@@ -16,6 +16,7 @@ let result = "";
 let addSpace = " ";
 let displayValue = " ";
 var e = "";
+let joinedArray = [];
 
 //let currentOperator = "";
 
@@ -143,16 +144,18 @@ function getNumber(num, currentOperator) {
 
             }
             
-            else if (operatorHolderArray.length == 3) {
+            else if (operatorHolderArray.length >= 3) {
                 z = 2;
                 o = 3;
                 replaceOperator();
-                preEquals(z,o);
+                preEquals();
+                joinedArray = [];
                     for (i=0; operatorHolderArray.length > i; i++ ) {
-                    joinedArray = [].concat(equationArray,operatorHolderArray);
-                    console.log("joiined array:"+joinedArray);
-                    displayValue = equationArray.join(" "+operatorHolderArray[i]+" ");
-                    printEquation = displayValue+ addSpace+ currentOperator +addSpace+joinedNumber;
+                   
+                    joinedArray.push(equationArray[i]);
+                    joinedArray.push(operatorHolderArray[i]);
+                    displayValue = joinedArray.join(" ");
+                    printEquation = displayValue+ addSpace +joinedNumber;
                     document.getElementById('equationDisplay').innerHTML= printEquation;
                     }    
             }
@@ -181,19 +184,19 @@ function getNumber(num, currentOperator) {
     };
    
     //fires if > 2 operands. 
-function preEquals(z,o) {
-    operandOne = equationArray[z]
-    operatorPull = operatorHolderArray[z];
-    operandTwo = equationArray[o];
+function preEquals() {
+    operandOne = equationArray[equationArray.length -2];
+    operatorPull = operatorHolderArray[operatorHolderArray.length -1];
+    operandTwo = equationArray[equationArray.length -1];
     result = operators[operatorPull](operandOne,operandTwo);
-    operandOne = result;
+    console.log("result: "+result);
+    operandOne = result; //resuolt of above math becomes operandOne.
     if ( joinedNumber >=10 ){
         operandOne = equationArray[0];
         operandTwo = equationArray[1];
         operandOne = operators[operatorPull](operandOne,operandTwo);
         operandTwo = joinedNumber;
         //operandOne = operators[operatorPull](operandOne,operandTwo);
-        console.log("new operandOne: "+operandOne);     
         }           
     };
 

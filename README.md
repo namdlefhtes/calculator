@@ -190,3 +190,8 @@ I started a loop in the code to alternate between values in equationArray and op
 2021-02-05 
 
 felt close at 146, but not really. need a way to join alternating values. not as simple as I thought. 
+
+2021-02-06 
+figured out simple way to handle displaying multi-part equation. math not working, but display is with loop. 
+
+preEquals() needs to be refactored to do something similar, so it can continuously shift the result to operand One automatically to calculate any length equation.
