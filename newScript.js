@@ -185,8 +185,7 @@ function preEquals() {
             operandTwo = equationArray[equationArray.length -1];
             operatorPull = operatorHolderArray[operatorHolderArray.length -2];
             result = operators[operatorPull](operandOne,operandTwo);
-            operandOne = result;
-        
+            operandOne = result;  
         }
     }; 
 
@@ -260,7 +259,7 @@ document.addEventListener("keydown", function(event) {
        getNumber(num);
     }
 
-    else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "Escape" ) {
+    else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "X" || pressedKey == "Escape" ) {
 
         switch(pressedKey) {
         case '+': 
@@ -282,7 +281,12 @@ document.addEventListener("keydown", function(event) {
             sign = 'x';
             operator(sign);
             break;
-            
+
+        case 'X':    
+            sign = 'x';
+            operator(sign);
+            break;
+        
         case 'Escape':
             sign = 'clear';
             operator(sign);
