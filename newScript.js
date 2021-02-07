@@ -17,6 +17,7 @@ let addSpace = " ";
 let displayValue = " ";
 var e = "";
 let joinedArray = [];
+let resultArray = [];
 
 //let currentOperator = "";
 
@@ -116,11 +117,11 @@ function getNumber(num, currentOperator) {
 
             }    
 
-            else if (operatorHolderArray.length ==2 ) { // 3 operand equation. 
+            else if (operatorHolderArray.length ==2 ) { // 3 operand equation. Fires preEquals();
                 z = 0;
                 o= 1;
                 replaceOperator();
-                preEquals(z,o);
+                preEquals();
                 printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
                 document.getElementById('equationDisplay').innerHTML= printEquation;
                 displayValue = printEquation;   
@@ -130,28 +131,16 @@ function getNumber(num, currentOperator) {
                     printEquation = equationArray[0]+addSpace+operatorHolderArray[0]+addSpace+equationArray[1]+addSpace+operatorHolderArray[1]+addSpace+joinedNumber; 
                     document.getElementById('equationDisplay').innerHTML= printEquation;
                     displayValue = printEquation;   
-                  /*  
-                   let run = 0, first =0, second =0;
-                     displayArray = [];
-                    if (first > second) {
-                        displayArray[run] = operatorHolderArray[second];
-                        first++;
-                    }
-
-                    run++;
-                        */
                 }      
 
             }
             
             else if (operatorHolderArray.length >= 3) {
-                z = 2;
-                o = 3;
+            
                 replaceOperator();
                 preEquals();
                 joinedArray = [];
                     for (i=0; operatorHolderArray.length > i; i++ ) {
-                   
                     joinedArray.push(equationArray[i]);
                     joinedArray.push(operatorHolderArray[i]);
                     displayValue = joinedArray.join(" ");
@@ -185,23 +174,24 @@ function getNumber(num, currentOperator) {
    
     //fires if > 2 operands. 
 function preEquals() {
-    operandOne = equationArray[equationArray.length -2];
-    operatorPull = operatorHolderArray[operatorHolderArray.length -1];
-    operandTwo = equationArray[equationArray.length -1];
-    result = operators[operatorPull](operandOne,operandTwo);
-    console.log("result: "+result);
-    operandOne = result; //resuolt of above math becomes operandOne.
-    if ( joinedNumber >=10 ){
+
+    /* need to have equationArray 1st 2 values operate on each other */
+        operatorPull = operatorHolderArray[0];
         operandOne = equationArray[0];
         operandTwo = equationArray[1];
-        operandOne = operators[operatorPull](operandOne,operandTwo);
-        operandTwo = joinedNumber;
-        //operandOne = operators[operatorPull](operandOne,operandTwo);
-        }           
-    };
+        result = operators[operatorPull](operandOne,operandTwo);
+        operandOne = result;
+        if (operatorHolderArray.length >= 3) {
+            operandTwo = equationArray[equationArray.length -1];
+            operatorPull = operatorHolderArray[operatorHolderArray.length -2];
+            result = operators[operatorPull](operandOne,operandTwo);
+            operandOne = result;
+        
+        }
+    }; 
 
 function equals(operatorPull) {
-    equationString = document.getElementById(   'equationDisplay').textContent;
+    equationString = document.getElementById('equationDisplay').textContent;
     //for 2 part equations.
     if ((typeof operandOne== 'undefined') ||operandOne == "") {
         equationArray.push(joinedNumber);
