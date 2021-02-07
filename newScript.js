@@ -17,7 +17,6 @@ let addSpace = " ";
 let displayValue = " ";
 var e = "";
 let joinedArray = [];
-let resultArray = [];
 
 //let currentOperator = "";
 
@@ -80,8 +79,6 @@ function operator(sign) {
     }
 };
 
-
-
 function getNumber(num, currentOperator) {
     const equationDisplay = document.getElementById("equationDisplay");
 
@@ -109,17 +106,18 @@ function getNumber(num, currentOperator) {
         printEquation = document.createTextNode(joinedNumber);
         equationDisplay.appendChild(printEquation);
 
+
             if (operatorHolderArray.length == 1 ) { // two operand equations. Does not use preEquals()
                 replaceOperator();
-                printEquation = (equationArray[0] + addSpace + operatorHolderArray[0] + addSpace + joinedNumber);
-                document.getElementById('equationDisplay').innerHTML= printEquation;   
+                printEquation = (equationArray[0] + addSpace + currentOperator + addSpace + joinedNumber);
+                document.getElementById('equationDisplay').innerHTML= printEquation;  
                 displayValue = printEquation;  
 
             }    
 
             else if (operatorHolderArray.length ==2 ) { // 3 operand equation. Fires preEquals();
-                z = 0;
-                o= 1;
+                //z = 0;
+                //o= 1;
                 replaceOperator();
                 preEquals();
                 printEquation = displayValue + addSpace+ currentOperator +addSpace+joinedNumber;
@@ -141,11 +139,25 @@ function getNumber(num, currentOperator) {
                 preEquals();
                 joinedArray = [];
                     for (i=0; operatorHolderArray.length > i; i++ ) {
-                    joinedArray.push(equationArray[i]);
-                    joinedArray.push(operatorHolderArray[i]);
-                    displayValue = joinedArray.join(" ");
-                    printEquation = displayValue+ addSpace +joinedNumber;
-                    document.getElementById('equationDisplay').innerHTML= printEquation;
+                        joinedArray.push(equationArray[i]);
+                        joinedArray.push(operatorHolderArray[i]);
+                        displayValue = joinedArray.join(" ");
+                            if ( displayValue.includes("/") == true) {
+                                displayValue = displayValue.replace("/","÷");
+                                printEquation = displayValue+ addSpace +joinedNumber;
+                                document.getElementById('equationDisplay').innerHTML= printEquation;
+                            }
+                            
+                            else if ( displayValue.includes("*")) {
+                                displayValue = displayValue.replace("*","x");
+                                printEquation = displayValue+ addSpace +joinedNumber;
+                                document.getElementById('equationDisplay').innerHTML= printEquation;
+
+                            }
+                            else {
+                                printEquation = displayValue+ addSpace +joinedNumber;
+                                document.getElementById('equationDisplay').innerHTML= printEquation; 
+                            }
                     }    
             }
 
