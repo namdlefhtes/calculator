@@ -195,3 +195,7 @@ felt close at 146, but not really. need a way to join alternating values. not as
 figured out simple way to handle displaying multi-part equation. math not working, but display is with loop. 
 
 preEquals() needs to be refactored to do something similar, so it can continuously shift the result to operand One automatically to calculate any length equation.
+
+2021-02-07
+
+preEquals and dispaly appear to be working. need to test further.
