@@ -134,7 +134,6 @@ function getNumber(num, currentOperator) {
             }
             
             else if (operatorHolderArray.length >= 3) {
-            
                 replaceOperator();
                 preEquals();
                 joinedArray = [];
@@ -160,29 +159,32 @@ function getNumber(num, currentOperator) {
                             }
                     }    
             }
+        }
+    }
 
-            
-            else if (num == ".") {
-                tempArray.push(num);
-                joinedNumber = Number(tempArray.join(""));
-                numArray.push(joinedNumber);
-               // let equationDisplay = document.getElementById("equationDisplay");
-                printEquation = document.createTextNode(".");
-                equationDisplay.appendChild(printEquation);
+    function addDecimal() {
+        tempArray.push(".");
+        joinedNumber = Number(tempArray.join(""));
+        numArray.push(joinedNumber);
+        // let equationDisplay = document.getElementById("equationDisplay");
+        printEquation = document.createTextNode(".");
+        equationDisplay.appendChild(printEquation);
+    
+        if  ( numArray.includes(NaN) == true ) {
+            numArray.pop();
+            tempArray.pop();
+            joinedNumber = Number(tempArray.join(""));
+            document.getElementById('errorDisplay').innerHTML='';
+            let errorElement = document.getElementById("errorDisplay");
+            let printError = document.createTextNode("Error: number can only contain one decimal.");
+            errorElement.appendChild(printError);
+            document.getElementById("equationDisplay").innerHTML = "";
+            joinedNumber = Number(tempArray.join(""));
+            document.getElementById("equationDisplay").innerHTML = joinedNumber+".";
 
-                    if  ( numArray.includes(NaN) == true ) {
-                        numArray.pop();
-                        tempArray.pop();
-                        joinedNumber = Number(tempArray.join(""));
-                        document.getElementById('errorDisplay').innerHTML='';
-                        let errorElement = document.getElementById("errorDisplay");
-                        let printError = document.createTextNode("Error: number can only contain one decimal.");
-                        errorElement.appendChild(printError);
-                        document.getElementById("numberDisplay").innerHTML = joinedNumber;
-                    }  
-            }
-        }    
+        }  
     };
+    
    
     //fires if > 2 operands. 
 function preEquals() {
@@ -198,8 +200,9 @@ function preEquals() {
             operatorPull = operatorHolderArray[operatorHolderArray.length -2];
             result = operators[operatorPull](operandOne,operandTwo);
             operandOne = result;  
-        }
-    }; 
+        };
+};  
+    
 
 function equals(operatorPull) {
     equationString = document.getElementById('equationDisplay').textContent;
@@ -267,8 +270,7 @@ document.addEventListener("keydown", function(event) {
     }
 
     else if ( pressedKey == '.' ) {
-       num = '.';
-       getNumber(num);
+       addDecimal();
     }
 
     else if ( pressedKey == "+" || pressedKey == "-" || pressedKey == "/" || pressedKey == "x" || pressedKey == "X" || pressedKey == "Escape" ) {

@@ -199,3 +199,7 @@ preEquals() needs to be refactored to do something similar, so it can continuous
 2021-02-07
 
 preEquals and dispaly appear to be working. need to test further.
+
+2021-02-08
+
+fixed decimal issue. 
